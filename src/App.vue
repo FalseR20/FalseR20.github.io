@@ -3,7 +3,7 @@
     <!-- Main Container -->
     <div class="max-w-4xl mx-auto px-6 py-12">
       <!-- Header Section -->
-      <header class="mb-16 animate-fade-in">
+      <header class="mb-16">
         <!-- Large Name Display -->
         <div class="mb-8">
           <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none mb-4">
@@ -176,12 +176,6 @@
         </section>
       </main>
 
-      <!-- Footer -->
-      <footer class="mt-20 pt-8 border-t border-gray-200 animate-fade-in-up" style="animation-delay: 0.8s;">
-        <p class="text-gray-500 text-sm text-center">
-          Built with <span class="text-red-500">♥</span> using Vue.js
-        </p>
-      </footer>
     </div>
   </div>
 </template>
@@ -198,21 +192,32 @@
 }
 
 .group h3 {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Smooth transitions for all interactive elements */
 a {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default link underlines */
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Enhanced hover effects for links */
 a:hover {
   transform: translateY(-1px);
+  text-decoration: none;
 }
 
-/* Subtle underline animation */
+/* Custom underline animation - only on hover */
 a::after {
   content: '';
   position: absolute;
@@ -220,8 +225,8 @@ a::after {
   height: 1px;
   bottom: -2px;
   left: 0;
-  background-color: #3b82f6;
-  transition: width 0.3s ease;
+  background-color: #4b5563;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 a:hover::after {
@@ -230,7 +235,7 @@ a:hover::after {
 
 /* Enhanced job card hover effects */
 .group {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   padding: 0.5rem;
   margin: -0.5rem;
   border-radius: 0.5rem;
@@ -239,7 +244,7 @@ a:hover::after {
 .group:hover {
   background-color: #f8fafc;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 /* Staggered animation delays for job items */
@@ -290,21 +295,7 @@ a:focus-visible {
   color: white;
 }
 
-/* Smooth page load animation */
-@keyframes pageLoad {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.min-h-screen {
-  animation: pageLoad 0.8s ease-out;
-}
+/* Removed page load animation for cleaner initial load */
 
 /* Subtle gradient text effect for name */
 h1 span:first-child {
