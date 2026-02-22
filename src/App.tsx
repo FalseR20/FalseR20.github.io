@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { APITester } from "./APITester";
+import { Button } from "@/components/ui/button";
 import "./index.css";
 
 import logo from "./logo.svg";
@@ -22,14 +22,21 @@ export function App() {
       </div>
       <Card>
         <CardHeader className="gap-4">
-          <CardTitle className="text-3xl font-bold">Bun + React</CardTitle>
+          <CardTitle className="text-3xl font-bold">Frontend-Only Bun + React</CardTitle>
           <CardDescription>
-            Edit <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono">src/App.tsx</code> and save to
-            test HMR
+            This app now runs as a client-only frontend. Edit{" "}
+            <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono">src/App.tsx</code> to build your UI.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <APITester />
+        <CardContent className="space-y-4 text-left">
+          <p className="text-sm text-muted-foreground">
+            The previous Bun API demo was removed. You can deploy the built <code className="font-mono">dist/</code>{" "}
+            output as static files.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+            <Button>Primary action</Button>
+            <Button variant="outline">Secondary action</Button>
+          </div>
         </CardContent>
       </Card>
     </div>
