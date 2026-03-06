@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.experimental.configFile": "styles/globals.css",
+  "tailwindCSS.classFunctions": ["cn", "clsx", "cva"],
+  "tailwindCSS.validate": true,
+  "tailwindCSS.lint.suggestCanonicalClasses": "warning",
+  "json.schemaDownload.trustedDomains": {
+    "https://ui.shadcn.com": true
+  }
+}

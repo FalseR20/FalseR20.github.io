@@ -7,23 +7,58 @@ import path from "path";
 type BuildTarget = Extract<Bun.BuildConfig["target"], string>;
 type BuildFormat = NonNullable<Bun.BuildConfig["format"]>;
 type PackageMode = NonNullable<Bun.BuildConfig["packages"]>;
-type SourcemapMode = Exclude<NonNullable<Bun.BuildConfig["sourcemap"]>, boolean>;
+type SourcemapMode = Exclude<
+  NonNullable<Bun.BuildConfig["sourcemap"]>,
+  boolean
+>;
 type MinifyOptions = Exclude<Bun.BuildConfig["minify"], boolean | undefined>;
 type CliBuildConfig = Partial<
   Pick<
     Bun.BuildConfig,
-    "outdir" | "sourcemap" | "target" | "format" | "splitting" | "packages" | "publicPath" | "env" | "conditions" | "external" | "banner" | "footer"
+    | "outdir"
+    | "sourcemap"
+    | "target"
+    | "format"
+    | "splitting"
+    | "packages"
+    | "publicPath"
+    | "env"
+    | "conditions"
+    | "external"
+    | "banner"
+    | "footer"
   >
 > & {
   define?: NonNullable<Bun.BuildConfig["define"]>;
   minify?: Bun.BuildConfig["minify"];
 };
 
-const buildTargets = ["browser", "bun", "node"] as const satisfies readonly BuildTarget[];
-const buildFormats = ["esm", "cjs", "iife"] as const satisfies readonly BuildFormat[];
-const packageModes = ["bundle", "external"] as const satisfies readonly PackageMode[];
-const sourcemapModes = ["none", "linked", "inline", "external"] as const satisfies readonly SourcemapMode[];
-const minifyKeys = ["whitespace", "syntax", "identifiers", "keepNames"] as const;
+const buildTargets = [
+  "browser",
+  "bun",
+  "node",
+] as const satisfies readonly BuildTarget[];
+const buildFormats = [
+  "esm",
+  "cjs",
+  "iife",
+] as const satisfies readonly BuildFormat[];
+const packageModes = [
+  "bundle",
+  "external",
+] as const satisfies readonly PackageMode[];
+const sourcemapModes = [
+  "none",
+  "linked",
+  "inline",
+  "external",
+] as const satisfies readonly SourcemapMode[];
+const minifyKeys = [
+  "whitespace",
+  "syntax",
+  "identifiers",
+  "keepNames",
+] as const;
 type MinifyKey = (typeof minifyKeys)[number];
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
@@ -55,7 +90,8 @@ Example:
   process.exit(0);
 }
 
-const toCamelCase = (str: string): string => str.replace(/-([a-z])/g, (_match, letter: string) => letter.toUpperCase());
+const toCamelCase = (str: string): string =>
+  str.replace(/-([a-z])/g, (_match, letter: string) => letter.toUpperCase());
 
 function requireValue(value: string | undefined, option: string): string {
   if (value === undefined || value.length === 0) {
@@ -65,7 +101,11 @@ function requireValue(value: string | undefined, option: string): string {
   return value;
 }
 
-function parseBoolean(value: string | undefined, fallback: boolean, option: string): boolean {
+function parseBoolean(
+  value: string | undefined,
+  fallback: boolean,
+  option: string,
+): boolean {
   if (value === undefined) {
     return fallback;
   }
@@ -78,7 +118,9 @@ function parseBoolean(value: string | undefined, fallback: boolean, option: stri
     return false;
   }
 
-  throw new Error(`Expected a boolean value for --${option}, received "${value}"`);
+  throw new Error(
+    `Expected a boolean value for --${option}, received "${value}"`,
+  );
 }
 
 function parseList(value: string | undefined, option: string): string[] {
@@ -88,7 +130,11 @@ function parseList(value: string | undefined, option: string): string[] {
     .filter(Boolean);
 }
 
-function parseEnum<T extends readonly string[]>(value: string | undefined, option: string, allowedValues: T): T[number] {
+function parseEnum<T extends readonly string[]>(
+  value: string | undefined,
+  option: string,
+  allowedValues: T,
+): T[number] {
   const resolvedValue = requireValue(value, option);
 
   if ((allowedValues as readonly string[]).includes(resolvedValue)) {
@@ -98,10 +144,16 @@ function parseEnum<T extends readonly string[]>(value: string | undefined, optio
   throw new Error(`Invalid value for --${option}: "${resolvedValue}"`);
 }
 
-function parseEnv(value: string | undefined): NonNullable<Bun.BuildConfig["env"]> {
+function parseEnv(
+  value: string | undefined,
+): NonNullable<Bun.BuildConfig["env"]> {
   const resolvedValue = requireValue(value, "env");
 
-  if (resolvedValue === "inline" || resolvedValue === "disable" || resolvedValue.endsWith("*")) {
+  if (
+    resolvedValue === "inline" ||
+    resolvedValue === "disable" ||
+    resolvedValue.endsWith("*")
+  ) {
     return resolvedValue as NonNullable<Bun.BuildConfig["env"]>;
   }
 
@@ -112,7 +164,9 @@ function isMinifyKey(value: string): value is MinifyKey {
   return (minifyKeys as readonly string[]).includes(value);
 }
 
-function createMinifyOptions(currentValue: CliBuildConfig["minify"]): MinifyOptions {
+function createMinifyOptions(
+  currentValue: CliBuildConfig["minify"],
+): MinifyOptions {
   if (typeof currentValue === "object" && currentValue !== null) {
     return { ...currentValue };
   }
@@ -138,7 +192,12 @@ function createMinifyOptions(currentValue: CliBuildConfig["minify"]): MinifyOpti
   return {};
 }
 
-function setConfigOption(config: CliBuildConfig, option: string, value: string | undefined, isNegated: boolean): void {
+function setConfigOption(
+  config: CliBuildConfig,
+  option: string,
+  value: string | undefined,
+  isNegated: boolean,
+): void {
   if (option.startsWith("define.")) {
     if (isNegated) {
       throw new Error(`--no-${option} is not supported`);
@@ -170,7 +229,13 @@ function setConfigOption(config: CliBuildConfig, option: string, value: string |
       config.minify = parseBoolean(value, !isNegated, option);
       return;
     case "sourcemap":
-      config.sourcemap = isNegated ? false : value === undefined ? true : value === "true" || value === "false" ? value === "true" : parseEnum(value, option, sourcemapModes);
+      config.sourcemap = isNegated
+        ? false
+        : value === undefined
+          ? true
+          : value === "true" || value === "false"
+            ? value === "true"
+            : parseEnum(value, option, sourcemapModes);
       return;
     case "target":
       if (isNegated) {
@@ -250,8 +315,14 @@ function parseArgs(): CliBuildConfig {
     const normalizedBody = normalizedArg.slice(2);
     const separatorIndex = normalizedBody.indexOf("=");
 
-    let rawKey = separatorIndex === -1 ? normalizedBody : normalizedBody.slice(0, separatorIndex);
-    let value = separatorIndex === -1 ? undefined : normalizedBody.slice(separatorIndex + 1);
+    let rawKey =
+      separatorIndex === -1
+        ? normalizedBody
+        : normalizedBody.slice(0, separatorIndex);
+    let value =
+      separatorIndex === -1
+        ? undefined
+        : normalizedBody.slice(separatorIndex + 1);
 
     if (value === undefined && !isNegated) {
       const nextArg = args[i + 1];
@@ -294,9 +365,11 @@ if (existsSync(outdir)) {
 const start = performance.now();
 
 const entrypoints = [...new Bun.Glob("**.html").scanSync("src")]
-  .map(a => path.resolve("src", a))
-  .filter(dir => !dir.includes("node_modules"));
-console.log(`📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`);
+  .map((a) => path.resolve("src", a))
+  .filter((dir) => !dir.includes("node_modules"));
+console.log(
+  `📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`,
+);
 
 const result = await Bun.build({
   entrypoints,
@@ -313,7 +386,7 @@ const result = await Bun.build({
 
 const end = performance.now();
 
-const outputTable = result.outputs.map(output => ({
+const outputTable = result.outputs.map((output) => ({
   File: path.relative(process.cwd(), output.path),
   Type: output.kind,
   Size: formatFileSize(output.size),

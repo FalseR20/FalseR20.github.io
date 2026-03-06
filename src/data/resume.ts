@@ -122,7 +122,15 @@ export const languageItems: LanguageItem[] = [
 export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend",
-    items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "HTML", "CSS", "Vite/Bun"],
+    items: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "HTML",
+      "CSS",
+      "Vite/Bun",
+    ],
   },
   {
     title: "Backend / API",

@@ -7,7 +7,7 @@
   }
 
   #root {
-    @apply w-full min-h-screen;
+    @apply min-h-screen w-full;
   }
 
   body {
