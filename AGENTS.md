@@ -46,6 +46,11 @@ There is currently:
 - `bun install` - install dependencies
 - `bun dev` - dev server with HMR (`bun --hot src/index.html`)
 - `bun start` - local preview without HMR (`bun src/index.html`)
+- `bun run format` - format the repo with Prettier
+- `bun run format:check` - verify formatting without writing changes
+- `bun run lint` - run ESLint and `tailwind-lint`
+- `bun run lint:fix` - apply ESLint and Tailwind lint fixes
+- `bun run typecheck` - run `tsc --noEmit`
 - `bun run build` - production build to `dist/`
 
 ## Conventions
@@ -69,4 +74,5 @@ If the app grows beyond a single page, prefer a feature-based structure such as:
 
 - `src/index.ts` (Bun API demo server) was intentionally removed in the frontend-only conversion
 - The build script already supports static builds by scanning `src/**/*.html`
-- Verify changes with `bun run build` when Bun is available in the environment
+- Tailwind v4 tooling should target `styles/globals.css`
+- Verify changes with `bun run lint`, `bun run typecheck`, and `bun run build` when Bun is available in the environment
