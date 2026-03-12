@@ -50,8 +50,8 @@ export function ProfileSection({
 
   return (
     <Card className="overflow-hidden bg-background py-0">
-      <CardContent className="relative px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8">
-        <div className="absolute top-5 right-5 flex items-center gap-2 sm:top-6 sm:right-7 lg:top-8 lg:right-8">
+      <CardContent className="px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8">
+        <div className="mb-4 flex items-center justify-end gap-2 sm:mb-5 lg:mb-6">
           <LocaleSwitcher
             locale={locale}
             locales={locales}
@@ -81,7 +81,7 @@ export function ProfileSection({
         </div>
 
         <div className="space-y-6">
-          <div className="space-y-3 pr-28 text-center sm:pr-32 lg:text-left">
+          <div className="space-y-3 text-center lg:text-left">
             <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
               {profile.fullName}
             </h1>
