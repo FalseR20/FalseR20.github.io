@@ -31,7 +31,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
         <ol className="relative space-y-5">
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute top-6 bottom-6 left-2.5 w-px -translate-x-1/2 bg-border sm:left-52.5"
+            className="pointer-events-none absolute top-5 bottom-5 hidden w-px -translate-x-1/2 bg-border sm:left-52.5 sm:block"
           />
           {experience.map((item, index) => (
             <ExperienceItem

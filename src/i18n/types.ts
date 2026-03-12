@@ -23,7 +23,6 @@ export type TranslationResource = {
     experience: {
       title: string;
       description: string;
-      latest: string;
     };
     education: {
       title: string;

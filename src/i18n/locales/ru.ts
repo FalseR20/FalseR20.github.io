@@ -19,7 +19,6 @@ export const ruTranslation: TranslationResource = {
     experience: {
       title: "Коммерческий опыт",
       description: "История занятости от самой новой роли к более ранним.",
-      latest: "Текущий",
     },
     education: {
       title: "Образование и сертификация",
@@ -72,7 +71,17 @@ export const ruTranslation: TranslationResource = {
       {
         company: "Беларуская чыгунка",
         role: "Middle Fullstack Developer",
-        period: "Июль 2024 - Июль 2026",
+        period: {
+          start: {
+            month: "Июль",
+            year: "2024",
+          },
+          end: {
+            month: "Июль",
+            year: "2026",
+          },
+          endIsEstimated: true,
+        },
         location: "Офис",
         bullets: [
           "Разработал ИИ-решение для поиска по эмбеддингам и интегрировал его с внутренними сервисами. Реализовал и backend, и frontend.",
@@ -83,7 +92,16 @@ export const ruTranslation: TranslationResource = {
       {
         company: "Atlant Software",
         role: "Middle Python Backend Developer",
-        period: "Ноябрь 2024 - Июль 2024",
+        period: {
+          start: {
+            month: "Ноябрь",
+            year: "2024",
+          },
+          end: {
+            month: "Июль",
+            year: "2024",
+          },
+        },
         location: "Удаленно",
         bullets: [
           "Разрабатывал backend-функциональность для крупной ресторанной платформы на Django.",
@@ -92,7 +110,16 @@ export const ruTranslation: TranslationResource = {
       {
         company: "Intelligent Semantic Systems",
         role: "Junior Python Backend Developer",
-        period: "Март 2022 - Сентябрь 2023",
+        period: {
+          start: {
+            month: "Март",
+            year: "2022",
+          },
+          end: {
+            month: "Сентябрь",
+            year: "2023",
+          },
+        },
         location: "Удаленно",
         bullets: [
           "Разрабатывал backend-сервисы для ИИ-пайплайнов и связанных процессов автоматизации.",

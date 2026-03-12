@@ -1,7 +1,9 @@
-import { useTranslation } from "react-i18next";
-
 import { cn } from "@/lib/utils";
-import type { ExperienceItem as ExperienceEntry } from "@/features/cv/data/cv";
+import type {
+  ExperienceDate,
+  ExperienceItem as ExperienceEntry,
+  ExperiencePeriod,
+} from "@/features/cv/data/cv";
 
 type ExperienceItemProps = {
   item: ExperienceEntry;
@@ -9,52 +11,135 @@ type ExperienceItemProps = {
   isLast: boolean;
 };
 
+function formatPeriodDate(date: ExperienceDate) {
+  return `${date.month} ${date.year}`;
+}
+
+function getPeriodLabels(period: ExperiencePeriod) {
+  return {
+    top: period.end ? formatPeriodDate(period.end) : null,
+    bottom: formatPeriodDate(period.start),
+  };
+}
+
 export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
-  const { t } = useTranslation();
+  const periodLabels = getPeriodLabels(item.period);
+  const hasEnd = periodLabels.top !== null;
+  const isEstimatedEnd = Boolean(item.period.end && item.period.endIsEstimated);
+  const mobileBadgeClassName =
+    "inline-flex shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium text-muted-foreground";
 
   return (
-    <li className="grid grid-cols-[1.25rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_1.25rem_minmax(0,1fr)] sm:gap-6">
-      <div className="hidden flex-col items-end gap-2 pt-5 text-right sm:flex">
-        <span className="text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase">
-          {item.period}
-        </span>
-        <span className="text-sm text-muted-foreground">{item.location}</span>
+    <li className="grid grid-cols-1 gap-4 sm:grid-cols-[11rem_1.25rem_minmax(0,1fr)] sm:gap-6">
+      <div
+        className={cn(
+          "hidden text-right sm:flex",
+          hasEnd
+            ? "sm:flex-col sm:justify-between sm:py-5"
+            : "sm:items-end sm:justify-end sm:py-5",
+        )}
+      >
+        {periodLabels.top ? (
+          <div className="flex min-h-3 items-center justify-end">
+            <span
+              className={cn(
+                "text-xs font-medium",
+                isEstimatedEnd
+                  ? "text-muted-foreground/70"
+                  : "text-muted-foreground",
+              )}
+            >
+              {periodLabels.top}
+            </span>
+          </div>
+        ) : null}
+        <div className="flex min-h-3 items-center justify-end">
+          <span className="text-xs font-medium text-muted-foreground">
+            {periodLabels.bottom}
+          </span>
+        </div>
       </div>
 
-      <div className="relative flex justify-center">
-        {isFirst ? (
+      <div
+        className={cn(
+          "relative hidden sm:flex sm:items-center",
+          hasEnd
+            ? "sm:flex-col sm:justify-between sm:py-5"
+            : "sm:justify-end sm:py-5",
+        )}
+      >
+        {isFirst && hasEnd ? (
           <span
             aria-hidden="true"
-            className="absolute top-0 left-1/2 h-6.5 w-2 -translate-x-1/2 bg-background"
+            className="absolute top-0 left-1/2 h-5 w-2 -translate-x-1/2 bg-background"
           />
         ) : null}
         {isLast ? (
           <span
             aria-hidden="true"
-            className="absolute top-6.5 bottom-0 left-1/2 w-2 -translate-x-1/2 bg-background"
+            className="absolute bottom-0 left-1/2 h-5 w-2 -translate-x-1/2 bg-background"
+          />
+        ) : null}
+        {hasEnd ? (
+          <span
+            aria-hidden="true"
+            className={cn(
+              "relative z-10 size-3 rounded-full ring-4 ring-background",
+              isEstimatedEnd
+                ? "border-2 border-primary bg-background"
+                : "bg-primary",
+            )}
+          />
+        ) : null}
+        {hasEnd ? (
+          <span
+            aria-hidden="true"
+            className={cn(
+              "relative w-1 flex-1 overflow-hidden rounded-full",
+              isEstimatedEnd
+                ? "cv-timeline-segment-animated bg-primary/10"
+                : "bg-primary/20",
+            )}
           />
         ) : null}
         <span
           aria-hidden="true"
-          className={cn(
-            "absolute top-5 left-1/2 size-3 -translate-x-1/2 rounded-full ring-4 ring-background",
-            isFirst ? "bg-primary" : "border-2 border-primary bg-background",
-          )}
+          className="relative z-10 size-3 rounded-full bg-primary ring-4 ring-background"
         />
       </div>
 
       <article className="rounded-xl border bg-card p-5 shadow-none sm:p-6">
-        <div className="flex flex-wrap gap-2 sm:hidden">
-          <span className="inline-flex rounded-full border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-            {item.period}
+        <div className="mb-4 flex items-center gap-2 sm:hidden">
+          <span
+            className={cn(mobileBadgeClassName, "border-border/70")}
+          >
+            {periodLabels.bottom}
           </span>
-          <span className="inline-flex rounded-full border border-dashed px-3 py-1 text-xs font-medium text-muted-foreground">
-            {item.location}
-          </span>
+          {periodLabels.top ? (
+            <span
+              aria-hidden="true"
+              className={cn(
+                "relative h-px min-w-0 flex-1 overflow-hidden rounded-full bg-primary/20",
+                isEstimatedEnd && "cv-timeline-segment-animated-horizontal",
+              )}
+            />
+          ) : null}
+          {periodLabels.top ? (
+            <span
+              className={cn(
+                mobileBadgeClassName,
+                isEstimatedEnd
+                  ? "border-dotted border-border/70 text-muted-foreground/70"
+                  : "border-border/70",
+              )}
+            >
+              {periodLabels.top}
+            </span>
+          ) : null}
         </div>
 
-        <div className="mt-4 flex flex-col gap-4 border-b border-border/70 pb-4 sm:mt-0 lg:flex-row lg:items-start lg:justify-between">
-          <div>
+        <div className="flex flex-col gap-3 border-b border-border/70 pb-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
             <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
               {item.role}
             </h3>
@@ -62,12 +147,9 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
               {item.company}
             </p>
           </div>
-
-          {isFirst ? (
-            <span className="inline-flex w-fit items-center rounded-full border bg-secondary px-3 py-1 text-xs font-semibold tracking-[0.18em] text-secondary-foreground uppercase">
-              {t("ui.experience.latest")}
-            </span>
-          ) : null}
+          <p className="text-xs font-medium text-muted-foreground sm:pt-1 sm:text-right sm:text-sm">
+            {item.location}
+          </p>
         </div>
 
         <ul className="mt-4 space-y-2.5 pl-5 text-sm leading-6 text-muted-foreground marker:text-foreground/60 sm:text-base">

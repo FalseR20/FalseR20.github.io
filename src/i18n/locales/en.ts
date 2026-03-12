@@ -20,7 +20,6 @@ export const enTranslation: TranslationResource = {
       title: "Professional Experience",
       description:
         "Employment history listed from most recent to earlier roles.",
-      latest: "Current",
     },
     education: {
       title: "Education & Certifications",
@@ -72,7 +71,17 @@ export const enTranslation: TranslationResource = {
       {
         company: "Belarusian Railway",
         role: "Middle Fullstack Developer",
-        period: "Jul 2024 - Jul 2026",
+        period: {
+          start: {
+            month: "July",
+            year: "2024",
+          },
+          end: {
+            month: "July",
+            year: "2026",
+          },
+          endIsEstimated: true,
+        },
         location: "On-site",
         bullets: [
           "Built an ML-powered embedding search solution and integrated it with internal services across both backend and frontend layers.",
@@ -83,7 +92,16 @@ export const enTranslation: TranslationResource = {
       {
         company: "Atlant Software",
         role: "Middle Python Backend Developer",
-        period: "Nov 2024 - Jul 2024",
+        period: {
+          start: {
+            month: "November",
+            year: "2024",
+          },
+          end: {
+            month: "July",
+            year: "2024",
+          },
+        },
         location: "Remote",
         bullets: [
           "Developed backend functionality for a large Django-based restaurant platform.",
@@ -92,7 +110,16 @@ export const enTranslation: TranslationResource = {
       {
         company: "Intelligent Semantic Systems",
         role: "Junior Python Backend Developer",
-        period: "Mar 2022 - Sep 2023",
+        period: {
+          start: {
+            month: "March",
+            year: "2022",
+          },
+          end: {
+            month: "September",
+            year: "2023",
+          },
+        },
         location: "Remote",
         bullets: [
           "Built backend services for AI processing pipelines and related automation workflows.",

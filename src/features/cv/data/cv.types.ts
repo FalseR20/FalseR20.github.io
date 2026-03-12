@@ -13,10 +13,21 @@ export type ContactItem = {
   href?: string;
 };
 
+export type ExperienceDate = {
+  month: string;
+  year: string;
+};
+
+export type ExperiencePeriod = {
+  start: ExperienceDate;
+  end?: ExperienceDate;
+  endIsEstimated?: boolean;
+};
+
 export type ExperienceItem = {
   company: string;
   role: string;
-  period: string;
+  period: ExperiencePeriod;
   location: string;
   bullets: string[];
 };
