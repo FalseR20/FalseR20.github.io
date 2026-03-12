@@ -1,22 +1,21 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { LanguageItem } from "@/features/cv/data/cv";
 
 type LanguagesSectionProps = {
   languages: LanguageItem[];
 };
 
-export function LanguagesSection({
-  languages,
-}: LanguagesSectionProps) {
+export function LanguagesSection({ languages }: LanguagesSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <Card className="bg-background">
       <CardHeader className="gap-2">
-        <CardTitle className="text-2xl sm:text-3xl">Languages</CardTitle>
+        <CardTitle className="text-2xl sm:text-3xl">
+          {t("ui.languages.title")}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <ul className="grid gap-3 sm:grid-cols-2">
@@ -28,7 +27,7 @@ export function LanguagesSection({
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                    Language
+                    {t("ui.languages.label")}
                   </p>
                   <p className="mt-2 text-base font-medium sm:text-lg">
                     {language.name}

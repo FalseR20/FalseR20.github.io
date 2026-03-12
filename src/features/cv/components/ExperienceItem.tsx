@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { cn } from "@/lib/utils";
 import type { ExperienceItem as ExperienceEntry } from "@/features/cv/data/cv";
 
@@ -7,11 +9,9 @@ type ExperienceItemProps = {
   isLast: boolean;
 };
 
-export function ExperienceItem({
-  item,
-  isFirst,
-  isLast,
-}: ExperienceItemProps) {
+export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
+  const { t } = useTranslation();
+
   return (
     <li className="grid grid-cols-[1.25rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_1.25rem_minmax(0,1fr)] sm:gap-6">
       <div className="hidden flex-col items-end gap-2 pt-5 text-right sm:flex">
@@ -65,7 +65,7 @@ export function ExperienceItem({
 
           {isFirst ? (
             <span className="inline-flex w-fit items-center rounded-full border bg-secondary px-3 py-1 text-xs font-semibold tracking-[0.18em] text-secondary-foreground uppercase">
-              Latest
+              {t("ui.experience.latest")}
             </span>
           ) : null}
         </div>

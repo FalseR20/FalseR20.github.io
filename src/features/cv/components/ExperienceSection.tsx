@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import {
   Card,
   CardContent,
@@ -12,17 +14,17 @@ type ExperienceSectionProps = {
   experience: ExperienceEntry[];
 };
 
-export function ExperienceSection({
-  experience,
-}: ExperienceSectionProps) {
+export function ExperienceSection({ experience }: ExperienceSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <Card className="bg-background">
       <CardHeader className="gap-3">
         <CardTitle className="text-2xl sm:text-3xl">
-          Professional Experience
+          {t("ui.experience.title")}
         </CardTitle>
         <CardDescription className="text-sm sm:text-base">
-          Employment history listed from most recent to earlier roles.
+          {t("ui.experience.description")}
         </CardDescription>
       </CardHeader>
       <CardContent>

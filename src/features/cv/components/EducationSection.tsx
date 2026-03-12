@@ -1,23 +1,20 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { EducationItem } from "@/features/cv/data/cv";
 
 type EducationSectionProps = {
   education: EducationItem[];
 };
 
-export function EducationSection({
-  education,
-}: EducationSectionProps) {
+export function EducationSection({ education }: EducationSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <Card className="bg-background">
       <CardHeader className="gap-2">
         <CardTitle className="text-2xl sm:text-3xl">
-          Education & Certifications
+          {t("ui.education.title")}
         </CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4 lg:grid-cols-2">
@@ -29,7 +26,7 @@ export function EducationSection({
             <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border/70 pb-3">
               <div>
                 <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                  Formation
+                  {t("ui.education.institution")}
                 </p>
                 <p className="mt-2 text-base font-medium sm:text-lg">
                   {item.institution}

@@ -2,6 +2,7 @@
  * Entry point for the falser.dev React app loaded by `src/index.html`.
  */
 
+import "./i18n";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";

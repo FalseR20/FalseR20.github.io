@@ -1,4 +1,3 @@
-export { cvData } from "./cv-content";
 export type {
   ContactIcon,
   ContactItem,

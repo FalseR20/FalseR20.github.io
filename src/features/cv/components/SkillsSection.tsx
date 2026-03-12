@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import {
   Card,
   CardContent,
@@ -12,15 +14,16 @@ type SkillsSectionProps = {
 };
 
 export function SkillsSection({ skillGroups }: SkillsSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <Card className="bg-background">
       <CardHeader className="gap-2">
         <CardTitle className="text-2xl sm:text-3xl">
-          Technical Skills
+          {t("ui.skills.title")}
         </CardTitle>
         <CardDescription className="text-sm sm:text-base">
-          Tools and technologies used across backend, frontend, mobile, and
-          delivery work.
+          {t("ui.skills.description")}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -31,7 +34,7 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
           >
             <div>
               <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                Domain
+                {t("ui.skills.domain")}
               </p>
               <h3 className="mt-2 text-sm font-medium tracking-[0.18em] text-foreground uppercase">
                 {group.title}
