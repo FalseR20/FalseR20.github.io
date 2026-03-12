@@ -25,7 +25,7 @@ Quick project guide for coding LLMs and agentic editors that do not read `AGENTS
 - `src/index.css`: app-level CSS
 - `src/lib/utils.ts`: `cn()` helper
 - `build.ts`: static build script
-- `src/data/resume.ts`: placeholder content data
+- `src/data/cv.ts`: placeholder content data
 
 ## Working Rules
 

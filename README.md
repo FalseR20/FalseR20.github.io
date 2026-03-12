@@ -1,6 +1,6 @@
 # falser.dev
 
-Static resume site built with Bun, React 19, TypeScript, Tailwind CSS v4, and shadcn-style Radix primitives.
+Static CV site built with Bun, React 19, TypeScript, Tailwind CSS v4, and shadcn-style Radix primitives.
 
 ## Stack
 
@@ -66,7 +66,7 @@ The custom domain remains controlled by `CNAME` and points to `falser.dev`.
 - `src/index.html`: HTML shell
 - `src/frontend.tsx`: React entrypoint
 - `src/App.tsx`: main page composition
-- `src/data/resume.ts`: placeholder resume content
+- `src/data/cv.ts`: placeholder CV content
 - `src/components/ui/*`: shared UI primitives
 - `src/index.css`: app-level styles
 - `styles/globals.css`: Tailwind tokens and theme variables

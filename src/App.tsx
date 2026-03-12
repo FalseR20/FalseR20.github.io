@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { FiMoon, FiSun } from "react-icons/fi";
-
+import type { IconType } from "react-icons";
 import {
-  contactItems,
-  educationItems,
-  experienceItems,
-  languageItems,
-  resumeProfile,
-  skillGroups,
-} from "@/data/resume";
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiMapPin,
+  FiMoon,
+  FiSun,
+} from "react-icons/fi";
+
+import { cvData, type ContactIcon } from "@/data/cv";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,11 +21,29 @@ import {
 import { cn } from "@/lib/utils";
 import "./index.css";
 
-import profilePlaceholder from "./profile-placeholder.svg";
-
 type Theme = "light" | "dark";
 
-const themeStorageKey = "resume-theme";
+const themeStorageKey = "cv-theme";
+const contactIcons: Record<ContactIcon, IconType> = {
+  mail: FiMail,
+  linkedin: FiLinkedin,
+  github: FiGithub,
+  location: FiMapPin,
+};
+
+function getInitials(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) {
+    return "CV";
+  }
+
+  return (
+    parts
+      .slice(0, 2)
+      .map((part) => part[0]?.toUpperCase() ?? "")
+      .join("") || "CV"
+  );
+}
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") {
@@ -43,6 +62,9 @@ function getInitialTheme(): Theme {
 
 export function App() {
   const [theme, setTheme] = useState<Theme>(() => getInitialTheme());
+  const { contacts, education, experience, languages, profile, skillGroups } =
+    cvData;
+  const initials = getInitials(profile.fullName);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -55,13 +77,28 @@ export function App() {
     <div className="mx-auto w-full max-w-7xl p-6">
       <Card className="overflow-hidden bg-background py-0">
         <CardContent className="p-0">
-          <div className="grid grid-cols-1 sm:grid-cols-[280px_minmax(0,1fr)] lg:grid-cols-[360px_minmax(0,1fr)]">
-            <div className="p-3 pb-0 sm:p-4 sm:pr-0">
-              <img
-                src={profilePlaceholder}
-                alt="Profile placeholder"
-                className="h-56 w-full object-contain sm:h-full sm:min-h-full"
-              />
+          <div className="grid grid-cols-1 border-b border-border lg:grid-cols-[240px_minmax(0,1fr)]">
+            <div className="border-b border-border bg-secondary/35 lg:border-r lg:border-b-0">
+              <div className="flex h-full flex-col justify-between gap-8 p-6 sm:p-7">
+                <span className="inline-flex w-fit rounded-full border bg-background px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                  Curriculum Vitae
+                </span>
+
+                <div className="space-y-5">
+                  <div className="flex size-24 items-center justify-center rounded-2xl border bg-background text-3xl font-semibold tracking-[0.18em] text-foreground">
+                    {initials}
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                      Current focus
+                    </p>
+                    <p className="text-base leading-7 font-medium text-foreground">
+                      {profile.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8">
@@ -93,31 +130,41 @@ export function App() {
 
               <div className="space-y-6">
                 <div className="space-y-3 text-center lg:text-left">
+                  <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                    Profile
+                  </p>
                   <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                    {resumeProfile.fullName}
+                    {profile.fullName}
                   </h1>
                   <p className="text-lg text-foreground/85 sm:text-xl">
-                    {resumeProfile.title}
+                    {profile.title}
                   </p>
-                  <p className="mx-auto max-w-3xl text-base leading-7 text-muted-foreground lg:mx-0">
-                    {resumeProfile.summary}
-                  </p>
+                  <div className="mx-auto max-w-3xl rounded-2xl border bg-card/70 px-5 py-4 lg:mx-0">
+                    <p className="text-base leading-7 text-muted-foreground">
+                      {profile.summary}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="grid gap-2.5 sm:grid-cols-2">
-                  {contactItems.map(({ icon: Icon, label, value, href }) => {
+                  {contacts.map(({ icon, label, value, href }) => {
+                    const Icon = contactIcons[icon];
                     const cardClassName =
-                      "rounded-lg border bg-card px-4 py-3 shadow-none transition-colors";
+                      "rounded-lg border bg-card px-4 py-3.5 shadow-none transition-colors";
                     const content = (
-                      <div className="flex items-center gap-3 text-left">
+                      <div className="flex items-start gap-3 text-left">
                         <Icon
-                          className="size-4 shrink-0 text-muted-foreground"
+                          className="mt-0.5 size-4 shrink-0 text-muted-foreground"
                           aria-hidden="true"
                         />
-                        <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
-                          <span className="sr-only">{label}: </span>
-                          {value}
-                        </p>
+                        <div className="min-w-0">
+                          <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                            {label}
+                          </p>
+                          <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
+                            {value}
+                          </p>
+                        </div>
                       </div>
                     );
 
@@ -157,11 +204,10 @@ export function App() {
         <Card className="bg-background">
           <CardHeader className="gap-3">
             <CardTitle className="text-2xl sm:text-3xl">
-              Commercial Experience
+              Professional Experience
             </CardTitle>
             <CardDescription className="text-sm sm:text-base">
-              Timeline of roles and responsibilities in paid product and client
-              work.
+              Employment history listed from most recent to earlier roles.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -170,7 +216,7 @@ export function App() {
                 aria-hidden="true"
                 className="pointer-events-none absolute top-6 bottom-6 left-2.5 w-px -translate-x-1/2 bg-border sm:left-52.5"
               />
-              {experienceItems.map((item, index) => (
+              {experience.map((item, index) => (
                 <li
                   key={`${item.company}-${item.role}`}
                   className="grid grid-cols-[1.25rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_1.25rem_minmax(0,1fr)] sm:gap-6"
@@ -191,7 +237,7 @@ export function App() {
                         className="absolute top-0 left-1/2 h-6.5 w-2 -translate-x-1/2 bg-background"
                       />
                     ) : null}
-                    {index === experienceItems.length - 1 ? (
+                    {index === experience.length - 1 ? (
                       <span
                         aria-hidden="true"
                         className="absolute top-6.5 bottom-0 left-1/2 w-2 -translate-x-1/2 bg-background"
@@ -208,7 +254,7 @@ export function App() {
                     />
                   </div>
 
-                  <article className="rounded-2xl border bg-card p-5 shadow-none transition-colors hover:bg-accent/15 sm:p-6">
+                  <article className="rounded-xl border bg-card p-5 shadow-none sm:p-6">
                     <div className="flex flex-wrap gap-2 sm:hidden">
                       <span className="inline-flex rounded-full border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
                         {item.period}
@@ -223,25 +269,21 @@ export function App() {
                         <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
                           {item.role}
                         </h3>
-                        <p className="mt-1.5 text-sm text-muted-foreground sm:text-base">
+                        <p className="mt-1.5 text-sm font-medium text-foreground/85 sm:text-base">
                           {item.company}
                         </p>
                       </div>
 
-                      <span className="inline-flex w-fit items-center rounded-full border bg-secondary px-3 py-1 text-xs font-semibold tracking-[0.18em] text-secondary-foreground uppercase">
-                        {String(experienceItems.length - index).padStart(
-                          2,
-                          "0",
-                        )}
-                      </span>
+                      {index === 0 ? (
+                        <span className="inline-flex w-fit items-center rounded-full border bg-secondary px-3 py-1 text-xs font-semibold tracking-[0.18em] text-secondary-foreground uppercase">
+                          Latest
+                        </span>
+                      ) : null}
                     </div>
 
-                    <ul className="mt-4 grid gap-3 lg:grid-cols-2">
+                    <ul className="mt-4 space-y-2.5 pl-5 text-sm leading-6 text-muted-foreground marker:text-foreground/60 sm:text-base">
                       {item.bullets.map((bullet) => (
-                        <li
-                          key={bullet}
-                          className="rounded-xl border bg-background/80 px-4 py-3 text-sm leading-6 text-muted-foreground sm:text-base"
-                        >
+                        <li key={bullet} className="list-disc">
                           {bullet}
                         </li>
                       ))}
@@ -255,22 +297,31 @@ export function App() {
 
         <Card className="bg-background">
           <CardHeader className="gap-2">
-            <CardTitle className="text-2xl sm:text-3xl">Education</CardTitle>
+            <CardTitle className="text-2xl sm:text-3xl">
+              Education & Certifications
+            </CardTitle>
           </CardHeader>
-          <CardContent className="grid gap-3 md:grid-cols-2">
-            {educationItems.map((item) => (
+          <CardContent className="grid gap-4 lg:grid-cols-2">
+            {education.map((item) => (
               <div
                 key={`${item.institution}-${item.degree}`}
-                className="rounded-xl border bg-card p-4 shadow-none sm:p-5"
+                className="rounded-xl border bg-card p-5 shadow-none"
               >
-                <p className="text-base font-medium sm:text-lg">
+                <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border/70 pb-3">
+                  <div>
+                    <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                      Formation
+                    </p>
+                    <p className="mt-2 text-base font-medium sm:text-lg">
+                      {item.institution}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center rounded-full border bg-secondary px-3 py-1 text-xs font-semibold tracking-[0.18em] text-secondary-foreground uppercase">
+                    {item.period}
+                  </span>
+                </div>
+                <p className="pt-3 text-sm leading-7 text-foreground/85 sm:text-base">
                   {item.degree}
-                </p>
-                <p className="mt-1.5 text-sm text-muted-foreground sm:text-base">
-                  {item.institution}
-                </p>
-                <p className="mt-2.5 text-xs text-muted-foreground sm:text-sm">
-                  {item.period}
                 </p>
               </div>
             ))}
@@ -282,16 +333,25 @@ export function App() {
             <CardTitle className="text-2xl sm:text-3xl">Languages</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="grid gap-2.5 sm:grid-cols-2">
-              {languageItems.map((language) => (
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {languages.map((language) => (
                 <li
                   key={language.name}
-                  className="flex items-center justify-between rounded-xl border bg-card px-4 py-3.5 text-sm shadow-none sm:px-5 sm:py-4 sm:text-base"
+                  className="rounded-xl border bg-card px-4 py-4 shadow-none sm:px-5"
                 >
-                  <span className="font-medium">{language.name}</span>
-                  <span className="text-muted-foreground">
-                    {language.level}
-                  </span>
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                        Language
+                      </p>
+                      <p className="mt-2 text-base font-medium sm:text-lg">
+                        {language.name}
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center rounded-full border bg-secondary px-3 py-1 text-xs font-semibold tracking-[0.18em] text-secondary-foreground uppercase">
+                      {language.level}
+                    </span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -300,25 +360,33 @@ export function App() {
 
         <Card className="bg-background">
           <CardHeader className="gap-2">
-            <CardTitle className="text-2xl sm:text-3xl">Skills</CardTitle>
+            <CardTitle className="text-2xl sm:text-3xl">
+              Technical Skills
+            </CardTitle>
             <CardDescription className="text-sm sm:text-base">
-              Core tools and technologies used in day-to-day development.
+              Tools and technologies used across backend, frontend, mobile, and
+              delivery work.
             </CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-5 lg:grid-cols-3">
+          <CardContent className="space-y-4">
             {skillGroups.map((group) => (
               <div
                 key={group.title}
-                className="rounded-xl border bg-card p-4 shadow-none sm:p-5"
+                className="grid gap-3 rounded-xl border bg-card p-4 shadow-none sm:p-5 md:grid-cols-[10rem_minmax(0,1fr)] md:items-start"
               >
-                <h3 className="text-sm font-medium text-muted-foreground sm:text-base">
-                  {group.title}
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-2.5">
+                <div>
+                  <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                    Domain
+                  </p>
+                  <h3 className="mt-2 text-sm font-medium tracking-[0.18em] text-foreground uppercase">
+                    {group.title}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
                   {group.items.map((skill) => (
                     <span
                       key={skill}
-                      className="inline-flex items-center rounded-md border bg-secondary px-3 py-1.5 text-xs font-medium sm:text-sm"
+                      className="inline-flex items-center rounded-md border bg-background px-3 py-1.5 text-xs font-medium text-foreground/85 sm:text-sm"
                     >
                       {skill}
                     </span>
