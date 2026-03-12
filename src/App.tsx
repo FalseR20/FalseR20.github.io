@@ -31,20 +31,6 @@ const contactIcons: Record<ContactIcon, IconType> = {
   location: FiMapPin,
 };
 
-function getInitials(fullName: string): string {
-  const parts = fullName.trim().split(/\s+/).filter(Boolean);
-  if (parts.length === 0) {
-    return "CV";
-  }
-
-  return (
-    parts
-      .slice(0, 2)
-      .map((part) => part[0]?.toUpperCase() ?? "")
-      .join("") || "CV"
-  );
-}
-
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") {
     return "light";
@@ -64,7 +50,6 @@ export function App() {
   const [theme, setTheme] = useState<Theme>(() => getInitialTheme());
   const { contacts, education, experience, languages, profile, skillGroups } =
     cvData;
-  const initials = getInitials(profile.fullName);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -76,125 +61,93 @@ export function App() {
   return (
     <div className="mx-auto w-full max-w-7xl p-6">
       <Card className="overflow-hidden bg-background py-0">
-        <CardContent className="p-0">
-          <div className="grid grid-cols-1 border-b border-border lg:grid-cols-[240px_minmax(0,1fr)]">
-            <div className="border-b border-border bg-secondary/35 lg:border-r lg:border-b-0">
-              <div className="flex h-full flex-col justify-between gap-8 p-6 sm:p-7">
-                <span className="inline-flex w-fit rounded-full border bg-background px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                  Curriculum Vitae
-                </span>
+        <CardContent className="relative px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8">
+          <div className="absolute top-5 right-5 sm:top-6 sm:right-7 lg:top-8 lg:right-8">
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              onClick={() =>
+                setTheme((currentTheme) =>
+                  currentTheme === "dark" ? "light" : "dark",
+                )
+              }
+              className="size-12 rounded-full text-muted-foreground hover:text-foreground"
+              aria-label={
+                theme === "dark"
+                  ? "Switch to light theme"
+                  : "Switch to dark theme"
+              }
+              title={theme === "dark" ? "Light theme" : "Dark theme"}
+            >
+              {theme === "dark" ? (
+                <FiSun className="size-6" />
+              ) : (
+                <FiMoon className="size-6" />
+              )}
+            </Button>
+          </div>
 
-                <div className="space-y-5">
-                  <div className="flex size-24 items-center justify-center rounded-2xl border bg-background text-3xl font-semibold tracking-[0.18em] text-foreground">
-                    {initials}
-                  </div>
-
-                  <div className="space-y-2">
-                    <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                      Current focus
-                    </p>
-                    <p className="text-base leading-7 font-medium text-foreground">
-                      {profile.title}
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div className="space-y-6">
+            <div className="space-y-3 pr-16 text-center sm:pr-20 lg:text-left">
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                {profile.fullName}
+              </h1>
+              <p className="text-lg text-foreground/85 sm:text-xl">
+                {profile.title}
+              </p>
+              <p className="text-base leading-7 text-muted-foreground">
+                {profile.summary}
+              </p>
             </div>
 
-            <div className="px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8">
-              <div className="mb-5 flex justify-end">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  onClick={() =>
-                    setTheme((currentTheme) =>
-                      currentTheme === "dark" ? "light" : "dark",
-                    )
-                  }
-                  className="size-12 rounded-full text-muted-foreground hover:text-foreground"
-                  aria-label={
-                    theme === "dark"
-                      ? "Switch to light theme"
-                      : "Switch to dark theme"
-                  }
-                  title={theme === "dark" ? "Light theme" : "Dark theme"}
-                >
-                  {theme === "dark" ? (
-                    <FiSun className="size-6" />
-                  ) : (
-                    <FiMoon className="size-6" />
-                  )}
-                </Button>
-              </div>
-
-              <div className="space-y-6">
-                <div className="space-y-3 text-center lg:text-left">
-                  <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                    Profile
-                  </p>
-                  <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                    {profile.fullName}
-                  </h1>
-                  <p className="text-lg text-foreground/85 sm:text-xl">
-                    {profile.title}
-                  </p>
-                  <div className="mx-auto max-w-3xl rounded-2xl border bg-card/70 px-5 py-4 lg:mx-0">
-                    <p className="text-base leading-7 text-muted-foreground">
-                      {profile.summary}
-                    </p>
+            <div className="grid gap-2.5 sm:grid-cols-2">
+              {contacts.map(({ icon, label, value, href }) => {
+                const Icon = contactIcons[icon];
+                const cardClassName =
+                  "rounded-lg border bg-card px-4 py-3.5 shadow-none transition-colors";
+                const content = (
+                  <div className="flex items-start gap-3 text-left">
+                    <Icon
+                      className="mt-0.5 size-4 shrink-0 text-muted-foreground"
+                      aria-hidden="true"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                        {label}
+                      </p>
+                      <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
+                        {value}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                );
 
-                <div className="grid gap-2.5 sm:grid-cols-2">
-                  {contacts.map(({ icon, label, value, href }) => {
-                    const Icon = contactIcons[icon];
-                    const cardClassName =
-                      "rounded-lg border bg-card px-4 py-3.5 shadow-none transition-colors";
-                    const content = (
-                      <div className="flex items-start gap-3 text-left">
-                        <Icon
-                          className="mt-0.5 size-4 shrink-0 text-muted-foreground"
-                          aria-hidden="true"
-                        />
-                        <div className="min-w-0">
-                          <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                            {label}
-                          </p>
-                          <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
-                            {value}
-                          </p>
-                        </div>
-                      </div>
-                    );
+                if (!href) {
+                  return (
+                    <div key={label} className={cardClassName}>
+                      {content}
+                    </div>
+                  );
+                }
 
-                    if (!href) {
-                      return (
-                        <div key={label} className={cardClassName}>
-                          {content}
-                        </div>
-                      );
-                    }
-
-                    return (
-                      <a
-                        key={label}
-                        href={href}
-                        target={href.startsWith("http") ? "_blank" : undefined}
-                        rel={href.startsWith("http") ? "noreferrer" : undefined}
-                        className={cn(
-                          cardClassName,
-                          "block hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
-                        )}
-                        aria-label={`${label}: ${value}`}
-                        title={value}
-                      >
-                        {content}
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noreferrer" : undefined}
+                    className={cn(
+                      cardClassName,
+                      "block hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
+                    )}
+                    aria-label={`${label}: ${value}`}
+                    title={value}
+                  >
+                    {content}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </CardContent>

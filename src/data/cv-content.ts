@@ -1,6 +1,5 @@
 import type { CvData } from "./cv.types";
 
-// Edit this file with your own profile, contact, and CV data.
 export const cvData = {
   profile: {
     fullName: "Mikhail Krupenkov",
