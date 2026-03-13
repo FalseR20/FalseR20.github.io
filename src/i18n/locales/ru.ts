@@ -22,7 +22,7 @@ export const ruTranslation: TranslationResource = {
     },
     education: {
       title: "Образование и сертификация",
-      institution: "Учебное заведение или курсы",
+      institution: "Учебное заведение или курс",
     },
     languages: {
       title: "Языки",
@@ -161,7 +161,7 @@ export const ruTranslation: TranslationResource = {
         items: ["TypeScript", "React", "Bootstrap", "Tailwind"],
       },
       {
-        title: "Мобильная разработка",
+        title: "Mobile",
         items: ["Dart", "Flutter", "Firebase", "Apple developer"],
       },
       {
