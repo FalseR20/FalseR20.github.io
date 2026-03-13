@@ -1,15 +1,16 @@
 import { useTranslation } from "react-i18next";
 import type { IconType } from "react-icons";
 import {
-  FiGithub,
-  FiLinkedin,
-  FiMail,
-  FiMapPin,
   FiMoon,
   FiSun,
+  FiMapPin,
+  FiMail,
+  FiLinkedin,
+  FiGithub,
 } from "react-icons/fi";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardSurface } from "@/components/ui/card";
+import { VStack } from "@/components/ui/layout";
 import { LocaleSwitcher } from "@/features/cv/components/LocaleSwitcher";
 import type {
   ContactIcon,
@@ -49,99 +50,105 @@ export function ProfileSection({
   const { t } = useTranslation();
 
   return (
-    <Card className="overflow-hidden rounded-none border-0 bg-background py-0 sm:rounded-xl sm:border">
-      <CardContent className="px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8">
-        <div className="mb-4 flex items-center justify-end gap-2 sm:mb-5 lg:mb-6">
-          <LocaleSwitcher
-            locale={locale}
-            locales={locales}
-            onChangeLocale={onChangeLocale}
-          />
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground transition-all outline-none hover:bg-accent hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:hover:bg-accent/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0"
-            aria-label={
-              theme === "dark"
-                ? t("ui.themeSwitcher.switchToLight")
-                : t("ui.themeSwitcher.switchToDark")
-            }
-            title={
-              theme === "dark"
-                ? t("ui.themeSwitcher.light")
-                : t("ui.themeSwitcher.dark")
-            }
-          >
-            {theme === "dark" ? (
-              <FiSun className="size-5" />
-            ) : (
-              <FiMoon className="size-5" />
-            )}
-          </button>
-        </div>
-
-        <div className="space-y-6">
-          <div className="space-y-3 text-center lg:text-left">
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              {profile.fullName}
-            </h1>
-            <p className="text-lg text-foreground/85 sm:text-xl">
-              {profile.title}
-            </p>
-            <p className="text-base leading-7 text-muted-foreground">
-              {profile.summary}
-            </p>
+    <Card>
+      <CardContent>
+        <VStack className="gap-4 sm:gap-5 lg:gap-6">
+          <div className="flex items-center justify-end gap-2">
+            <LocaleSwitcher
+              locale={locale}
+              locales={locales}
+              onChangeLocale={onChangeLocale}
+            />
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground transition-all outline-none hover:bg-accent hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:hover:bg-accent/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+              aria-label={
+                theme === "dark"
+                  ? t("ui.themeSwitcher.switchToLight")
+                  : t("ui.themeSwitcher.switchToDark")
+              }
+              title={
+                theme === "dark"
+                  ? t("ui.themeSwitcher.light")
+                  : t("ui.themeSwitcher.dark")
+              }
+            >
+              {theme === "dark" ? (
+                <FiSun className="size-5" />
+              ) : (
+                <FiMoon className="size-5" />
+              )}
+            </button>
           </div>
 
-          <div className="grid gap-2.5 sm:grid-cols-2">
-            {contacts.map(({ icon, label, value, href }) => {
-              const Icon = contactIcons[icon];
-              const cardClassName =
-                "rounded-lg border bg-card px-4 py-3.5 shadow-none transition-colors";
-              const content = (
-                <div className="flex items-start gap-3 text-left">
-                  <Icon
-                    className="mt-0.5 size-4 shrink-0 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                  <div className="min-w-0">
-                    <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                      {label}
-                    </p>
-                    <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
-                      {value}
-                    </p>
-                  </div>
-                </div>
-              );
+          <VStack size="2xl">
+            <VStack size="md" className="text-center lg:text-left">
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                {profile.fullName}
+              </h1>
+              <p className="text-lg text-foreground/85 sm:text-xl">
+                {profile.title}
+              </p>
+              <p className="text-base leading-7 text-muted-foreground">
+                {profile.summary}
+              </p>
+            </VStack>
 
-              if (!href) {
-                return (
-                  <div key={label} className={cardClassName}>
-                    {content}
+            <div className="grid gap-2.5 sm:grid-cols-2">
+              {contacts.map(({ icon, label, value, href }) => {
+                const Icon = contactIcons[icon];
+                const content = (
+                  <div className="flex items-start gap-3 text-left">
+                    <Icon
+                      className="mt-0.5 size-4 shrink-0 text-muted-foreground"
+                      aria-hidden="true"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+                        {label}
+                      </p>
+                      <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
+                        {value}
+                      </p>
+                    </div>
                   </div>
                 );
-              }
 
-              return (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  className={cn(
-                    cardClassName,
-                    "block hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
-                  )}
-                  aria-label={`${label}: ${value}`}
-                  title={value}
-                >
-                  {content}
-                </a>
-              );
-            })}
-          </div>
-        </div>
+                if (!href) {
+                  return (
+                    <CardSurface
+                      key={label}
+                      size="dense"
+                      className="transition-colors"
+                    >
+                      {content}
+                    </CardSurface>
+                  );
+                }
+
+                return (
+                  <CardSurface
+                    as="a"
+                    key={label}
+                    size="dense"
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noreferrer" : undefined}
+                    className={cn(
+                      "block hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
+                      "transition-colors",
+                    )}
+                    aria-label={`${label}: ${value}`}
+                    title={value}
+                  >
+                    {content}
+                  </CardSurface>
+                );
+              })}
+            </div>
+          </VStack>
+        </VStack>
       </CardContent>
     </Card>
   );

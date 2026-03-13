@@ -6,6 +6,7 @@ import { ExperienceSection } from "@/features/cv/components/ExperienceSection";
 import { LanguagesSection } from "@/features/cv/components/LanguagesSection";
 import { ProfileSection } from "@/features/cv/components/ProfileSection";
 import { SkillsSection } from "@/features/cv/components/SkillsSection";
+import { SectionStack } from "@/components/ui/layout";
 import { getCvData } from "@/i18n/resources";
 import { useLocalePreference } from "@/features/cv/hooks/useLocalePreference";
 import { useThemePreference } from "@/features/cv/hooks/useThemePreference";
@@ -25,24 +26,21 @@ export function CvPage() {
 
   return (
     <div className="mx-auto w-full max-w-7xl p-0 sm:p-6">
-      <ProfileSection
-        contacts={contacts}
-        locale={locale}
-        locales={locales}
-        onChangeLocale={setLocale}
-        profile={profile}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-      />
-      <div aria-hidden="true" className="h-px bg-foreground/12 sm:hidden" />
-
-      <main className="mt-0 space-y-0 sm:mt-6 sm:space-y-6">
+      <SectionStack as="main">
+        <ProfileSection
+          contacts={contacts}
+          locale={locale}
+          locales={locales}
+          onChangeLocale={setLocale}
+          profile={profile}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+        />
         <ExperienceSection experience={experience} />
         <EducationSection education={education} />
-        <div aria-hidden="true" className="h-px bg-foreground/12 sm:hidden" />
         <LanguagesSection languages={languages} />
         <SkillsSection skillGroups={skillGroups} />
-      </main>
+      </SectionStack>
     </div>
   );
 }

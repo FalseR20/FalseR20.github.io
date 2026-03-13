@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { VStack } from "@/components/ui/layout";
 import { ExperienceItem } from "@/features/cv/components/ExperienceItem";
 import type { ExperienceItem as ExperienceEntry } from "@/features/cv/data/cv";
 
@@ -18,17 +19,13 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <Card className="rounded-none border-0 bg-background sm:rounded-xl sm:border sm:border-border">
+    <Card>
       <CardHeader className="gap-3">
-        <CardTitle className="text-2xl sm:text-3xl">
-          {t("ui.experience.title")}
-        </CardTitle>
-        <CardDescription className="text-sm sm:text-base">
-          {t("ui.experience.description")}
-        </CardDescription>
+        <CardTitle>{t("ui.experience.title")}</CardTitle>
+        <CardDescription>{t("ui.experience.description")}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ol className="relative space-y-5">
+        <VStack as="ol" size="xl" className="relative">
           <span
             aria-hidden="true"
             className="pointer-events-none absolute top-5 bottom-5 hidden w-px -translate-x-1/2 bg-border sm:left-52.5 sm:block"
@@ -41,7 +38,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
               isLast={index === experience.length - 1}
             />
           ))}
-        </ol>
+        </VStack>
       </CardContent>
     </Card>
   );

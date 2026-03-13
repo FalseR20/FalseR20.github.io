@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import { CardSurface } from "@/components/ui/card";
+import { VStack } from "@/components/ui/layout";
 import type {
   ExperienceDate,
   ExperienceItem as ExperienceEntry,
@@ -108,56 +110,58 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
         />
       </div>
 
-      <div className="rounded-xl border bg-card p-5 shadow-none sm:p-6">
-        <div className="mb-4 flex items-center gap-2 sm:hidden">
-          <span className={cn(mobileBadgeClassName, "border-border/70")}>
-            {periodLabels.bottom}
-          </span>
-          {periodLabels.top ? (
-            <span
-              aria-hidden="true"
-              className={cn(
-                "relative h-px min-w-0 flex-1 overflow-hidden rounded-full bg-primary/20",
-                isEstimatedEnd && "cv-timeline-segment-animated-horizontal",
-              )}
-            />
-          ) : null}
-          {periodLabels.top ? (
-            <span
-              className={cn(
-                mobileBadgeClassName,
-                isEstimatedEnd
-                  ? "border-dotted border-border/70 text-muted-foreground/70"
-                  : "border-border/70",
-              )}
-            >
-              {periodLabels.top}
+      <CardSurface size="default">
+        <VStack size="lg">
+          <div className="flex items-center gap-2 sm:hidden">
+            <span className={cn(mobileBadgeClassName, "border-border/70")}>
+              {periodLabels.bottom}
             </span>
-          ) : null}
-        </div>
+            {periodLabels.top ? (
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "relative h-px min-w-0 flex-1 overflow-hidden rounded-full bg-primary/20",
+                  isEstimatedEnd && "cv-timeline-segment-animated-horizontal",
+                )}
+              />
+            ) : null}
+            {periodLabels.top ? (
+              <span
+                className={cn(
+                  mobileBadgeClassName,
+                  isEstimatedEnd
+                    ? "border-dotted border-border/70 text-muted-foreground/70"
+                    : "border-border/70",
+                )}
+              >
+                {periodLabels.top}
+              </span>
+            ) : null}
+          </div>
 
-        <div className="flex flex-col gap-3 border-b border-border/70 pb-4 sm:flex-row sm:items-start sm:justify-between">
-          <div className="min-w-0">
-            <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
-              {item.role}
-            </h3>
-            <p className="mt-1.5 text-sm font-medium text-foreground/85 sm:text-base">
-              {item.company}
+          <div className="flex flex-col gap-3 border-b border-border/70 pb-4 sm:flex-row sm:items-start sm:justify-between">
+            <VStack size="xs" className="min-w-0">
+              <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
+                {item.role}
+              </h3>
+              <p className="text-sm font-medium text-foreground/85 sm:text-base">
+                {item.company}
+              </p>
+            </VStack>
+            <p className="text-xs font-medium text-muted-foreground sm:pt-1 sm:text-right sm:text-sm">
+              {item.location}
             </p>
           </div>
-          <p className="text-xs font-medium text-muted-foreground sm:pt-1 sm:text-right sm:text-sm">
-            {item.location}
-          </p>
-        </div>
 
-        <ul className="mt-4 space-y-2.5 pl-5 text-sm leading-6 text-muted-foreground marker:text-foreground/60 sm:text-base">
-          {item.bullets.map((bullet) => (
-            <li key={bullet} className="list-disc">
-              {bullet}
-            </li>
-          ))}
-        </ul>
-      </div>
+          <ul className="space-y-2.5 pl-5 text-sm leading-6 text-muted-foreground marker:text-foreground/60 sm:text-base">
+            {item.bullets.map((bullet) => (
+              <li key={bullet} className="list-disc">
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </VStack>
+      </CardSurface>
     </li>
   );
 }

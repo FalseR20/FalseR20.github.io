@@ -2,12 +2,27 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+const cardSurfaceSizeClassNames = {
+  default: "p-5 sm:p-6",
+  compact: "p-4 sm:p-5",
+  inline: "px-4 py-4 sm:px-5",
+  dense: "px-4 py-3.5",
+} as const;
+
+type CardSurfaceSize = keyof typeof cardSurfaceSizeClassNames;
+type CardSurfaceOwnProps<T extends React.ElementType> = {
+  as?: T;
+  size?: CardSurfaceSize;
+};
+type CardSurfaceProps<T extends React.ElementType> = CardSurfaceOwnProps<T> &
+  Omit<React.ComponentPropsWithoutRef<T>, keyof CardSurfaceOwnProps<T>>;
+
+export function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card"
       className={cn(
-        "flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-none",
+        "flex flex-col gap-6 rounded-none border-0 bg-background py-6 text-card-foreground shadow-none sm:rounded-xl sm:border sm:border-border",
         className,
       )}
       {...props}
@@ -15,7 +30,10 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+export function CardHeader({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-header"
@@ -28,27 +46,39 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+export function CardTitle({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-title"
-      className={cn("leading-none font-semibold", className)}
+      className={cn(
+        "text-2xl leading-none font-semibold sm:text-3xl",
+        className,
+      )}
       {...props}
     />
   );
 }
 
-function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+export function CardDescription({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-description"
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn("text-sm text-muted-foreground sm:text-base", className)}
       {...props}
     />
   );
 }
 
-function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+export function CardContent({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-content"
@@ -58,4 +88,23 @@ function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export { Card, CardContent, CardDescription, CardHeader, CardTitle };
+export function CardSurface<T extends React.ElementType = "div">({
+  as,
+  size = "default",
+  className,
+  ...props
+}: CardSurfaceProps<T>) {
+  const Component = as ?? "div";
+
+  return (
+    <Component
+      data-slot="card-surface"
+      className={cn(
+        "rounded-xl border bg-card shadow-none",
+        cardSurfaceSizeClassNames[size],
+        className,
+      )}
+      {...props}
+    />
+  );
+}
