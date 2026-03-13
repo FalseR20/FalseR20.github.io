@@ -24,7 +24,7 @@ export function CvPage() {
   }, [locale, t]);
 
   return (
-    <div className="mx-auto w-full max-w-7xl p-6">
+    <div className="mx-auto w-full max-w-7xl p-0 sm:p-6">
       <ProfileSection
         contacts={contacts}
         locale={locale}
@@ -34,10 +34,12 @@ export function CvPage() {
         theme={theme}
         onToggleTheme={toggleTheme}
       />
+      <div aria-hidden="true" className="h-px bg-foreground/12 sm:hidden" />
 
-      <main className="mt-6 space-y-6">
+      <main className="mt-0 space-y-0 sm:mt-6 sm:space-y-6">
         <ExperienceSection experience={experience} />
         <EducationSection education={education} />
+        <div aria-hidden="true" className="h-px bg-foreground/12 sm:hidden" />
         <LanguagesSection languages={languages} />
         <SkillsSection skillGroups={skillGroups} />
       </main>

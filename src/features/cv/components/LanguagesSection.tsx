@@ -11,7 +11,7 @@ export function LanguagesSection({ languages }: LanguagesSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <Card className="bg-background">
+    <Card className="rounded-none border-0 bg-background sm:rounded-xl sm:border sm:border-border">
       <CardHeader className="gap-2">
         <CardTitle className="text-2xl sm:text-3xl">
           {t("ui.languages.title")}

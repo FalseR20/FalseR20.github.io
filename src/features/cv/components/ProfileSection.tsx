@@ -49,7 +49,7 @@ export function ProfileSection({
   const { t } = useTranslation();
 
   return (
-    <Card className="overflow-hidden bg-background py-0">
+    <Card className="overflow-hidden rounded-none border-0 bg-background py-0 sm:rounded-xl sm:border">
       <CardContent className="px-5 py-5 sm:px-7 sm:py-6 lg:px-8 lg:py-8">
         <div className="mb-4 flex items-center justify-end gap-2 sm:mb-5 lg:mb-6">
           <LocaleSwitcher

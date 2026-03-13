@@ -17,7 +17,7 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <Card className="bg-background">
+    <Card className="rounded-none border-x-0 border-t border-b-0 border-foreground/12 bg-background sm:rounded-xl sm:border sm:border-border">
       <CardHeader className="gap-2">
         <CardTitle className="text-2xl sm:text-3xl">
           {t("ui.skills.title")}

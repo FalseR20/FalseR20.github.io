@@ -108,11 +108,9 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
         />
       </div>
 
-      <article className="rounded-xl border bg-card p-5 shadow-none sm:p-6">
+      <div className="rounded-xl border bg-card p-5 shadow-none sm:p-6">
         <div className="mb-4 flex items-center gap-2 sm:hidden">
-          <span
-            className={cn(mobileBadgeClassName, "border-border/70")}
-          >
+          <span className={cn(mobileBadgeClassName, "border-border/70")}>
             {periodLabels.bottom}
           </span>
           {periodLabels.top ? (
@@ -159,7 +157,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
             </li>
           ))}
         </ul>
-      </article>
+      </div>
     </li>
   );
 }

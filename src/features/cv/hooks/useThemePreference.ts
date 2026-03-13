@@ -30,9 +30,7 @@ export function useThemePreference() {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((currentTheme) =>
-      currentTheme === "dark" ? "light" : "dark",
-    );
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
   };
 
   return { theme, toggleTheme };

@@ -18,7 +18,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <Card className="bg-background">
+    <Card className="rounded-none border-0 bg-background sm:rounded-xl sm:border sm:border-border">
       <CardHeader className="gap-3">
         <CardTitle className="text-2xl sm:text-3xl">
           {t("ui.experience.title")}
