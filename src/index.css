@@ -54,8 +54,8 @@
     transparent 100%
   );
   background-size: 100% 200%;
-  animation: cv-timeline-flow 10s linear infinite;
-  opacity: 0.95;
+  animation: cv-timeline-flow 8s linear infinite;
+  opacity: 0.55;
 }
 
 .cv-timeline-segment-animated-horizontal::after {
@@ -73,8 +73,8 @@
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: cv-timeline-flow-horizontal 10s linear infinite reverse;
-  opacity: 0.95;
+  animation: cv-timeline-flow-horizontal 8s linear infinite reverse;
+  opacity: 0.55;
 }
 
 @media (prefers-reduced-motion: reduce) {

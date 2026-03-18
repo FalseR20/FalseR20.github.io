@@ -95,7 +95,7 @@ export const enTranslation: TranslationResource = {
         period: {
           start: {
             month: "November",
-            year: "2024",
+            year: "2023",
           },
           end: {
             month: "July",

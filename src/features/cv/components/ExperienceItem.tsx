@@ -30,6 +30,11 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
   const isEstimatedEnd = Boolean(item.period.end && item.period.endIsEstimated);
   const mobileBadgeClassName =
     "inline-flex shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium text-muted-foreground";
+  const timelineDotClassName =
+    "relative z-10 size-3 rounded-full ring-[3px] ring-background";
+  const timelineDefaultDotClassName =
+    "border border-muted-foreground bg-muted-foreground";
+  const timelineEstimatedDotClassName = "border-2 border-ring bg-background";
 
   return (
     <li className="grid grid-cols-1 gap-4 sm:grid-cols-[11rem_1.25rem_minmax(0,1fr)] sm:gap-6">
@@ -86,10 +91,10 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
           <span
             aria-hidden="true"
             className={cn(
-              "relative z-10 size-3 rounded-full ring-4 ring-background",
+              timelineDotClassName,
               isEstimatedEnd
-                ? "border-2 border-primary bg-background"
-                : "bg-primary",
+                ? timelineEstimatedDotClassName
+                : timelineDefaultDotClassName,
             )}
           />
         ) : null}
@@ -99,14 +104,14 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
             className={cn(
               "relative w-1 flex-1 overflow-hidden rounded-full",
               isEstimatedEnd
-                ? "cv-timeline-segment-animated bg-primary/10"
-                : "bg-primary/20",
+                ? "cv-timeline-segment-animated bg-primary/5"
+                : "bg-primary/10",
             )}
           />
         ) : null}
         <span
           aria-hidden="true"
-          className="relative z-10 size-3 rounded-full bg-primary ring-4 ring-background"
+          className={cn(timelineDotClassName, timelineDefaultDotClassName)}
         />
       </div>
 
@@ -120,7 +125,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
               <span
                 aria-hidden="true"
                 className={cn(
-                  "relative h-px min-w-0 flex-1 overflow-hidden rounded-full bg-primary/20",
+                  "relative h-px min-w-0 flex-1 overflow-hidden rounded-full bg-primary/10",
                   isEstimatedEnd && "cv-timeline-segment-animated-horizontal",
                 )}
               />

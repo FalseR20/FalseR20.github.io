@@ -95,7 +95,7 @@ export const ruTranslation: TranslationResource = {
         period: {
           start: {
             month: "Ноябрь",
-            year: "2024",
+            year: "2023",
           },
           end: {
             month: "Июль",

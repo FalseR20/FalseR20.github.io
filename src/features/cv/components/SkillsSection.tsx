@@ -17,6 +17,8 @@ type SkillsSectionProps = {
 
 export function SkillsSection({ skillGroups }: SkillsSectionProps) {
   const { t } = useTranslation();
+  const skillBadgeClassName =
+    "inline-flex min-w-0 max-w-full items-center rounded-full border bg-secondary px-3 py-1 text-xs leading-5 font-semibold text-secondary-foreground";
 
   return (
     <Card>
@@ -30,7 +32,7 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
             <CardSurface
               key={group.title}
               size="compact"
-              className="grid gap-3 md:grid-cols-[10rem_minmax(0,1fr)] md:items-start"
+              className="grid gap-3 md:grid-cols-[10rem_minmax(0,1fr)] md:items-center"
             >
               <VStack size="sm">
                 <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
@@ -40,12 +42,9 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
                   {group.title}
                 </h3>
               </VStack>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap items-center gap-2 md:self-center">
                 {group.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="inline-flex items-center rounded-md border bg-background px-3 py-1.5 text-xs font-medium text-foreground/85 sm:text-sm"
-                  >
+                  <span key={skill} className={skillBadgeClassName}>
                     {skill}
                   </span>
                 ))}
