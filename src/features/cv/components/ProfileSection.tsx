@@ -10,6 +10,7 @@ import {
 } from "react-icons/fi";
 
 import { Card, CardContent, CardSurface } from "@/components/ui/card";
+import { CvLabel } from "@/features/cv/components/CvPrimitives";
 import { VStack } from "@/components/ui/layout";
 import { LocaleSwitcher } from "@/features/cv/components/LocaleSwitcher";
 import type {
@@ -105,9 +106,7 @@ export function ProfileSection({
                       aria-hidden="true"
                     />
                     <div className="min-w-0">
-                      <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
-                        {label}
-                      </p>
+                      <CvLabel>{label}</CvLabel>
                       <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
                         {value}
                       </p>
