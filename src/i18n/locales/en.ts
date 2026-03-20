@@ -80,6 +80,7 @@ export const enTranslation: TranslationResource = {
             month: "July",
             year: "2026",
           },
+          duration: "2 years",
           endIsEstimated: true,
         },
         location: "On-site",
@@ -101,6 +102,7 @@ export const enTranslation: TranslationResource = {
             month: "July",
             year: "2024",
           },
+          duration: "9 months",
         },
         location: "Remote",
         bullets: [
@@ -119,6 +121,7 @@ export const enTranslation: TranslationResource = {
             month: "September",
             year: "2023",
           },
+          duration: "1 year 7 months",
         },
         location: "Remote",
         bullets: [

@@ -21,6 +21,7 @@ export type ExperienceDate = {
 export type ExperiencePeriod = {
   start: ExperienceDate;
   end?: ExperienceDate;
+  duration?: string;
   endIsEstimated?: boolean;
 };
 

@@ -20,6 +20,7 @@ function formatPeriodDate(date: ExperienceDate) {
 function getPeriodLabels(period: ExperiencePeriod) {
   return {
     top: period.end ? formatPeriodDate(period.end) : null,
+    duration: period.duration ?? null,
     bottom: formatPeriodDate(period.start),
   };
 }
@@ -37,7 +38,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
   const timelineEstimatedDotClassName = "border-2 border-ring bg-background";
 
   return (
-    <li className="grid grid-cols-1 gap-4 sm:grid-cols-[11rem_1.25rem_minmax(0,1fr)] sm:gap-6">
+    <li className="grid grid-cols-1 gap-4 sm:grid-cols-[var(--timeline-date-column)_var(--timeline-line-column)_minmax(0,1fr)] sm:gap-[var(--timeline-gap)]">
       <div
         className={cn(
           "hidden text-right sm:flex",
@@ -75,6 +76,13 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
             : "sm:justify-end sm:py-5",
         )}
       >
+        {hasEnd && periodLabels.duration ? (
+          <span
+            className="pointer-events-none absolute top-1/2 left-1/2 z-20 block -translate-x-[calc(50%+11px)] -translate-y-1/2 whitespace-nowrap text-[11px] leading-none font-medium text-muted-foreground/55 -rotate-90"
+          >
+            {periodLabels.duration}
+          </span>
+        ) : null}
         {isFirst && hasEnd ? (
           <span
             aria-hidden="true"
@@ -117,15 +125,24 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
 
       <CardSurface size="default">
         <VStack size="lg">
-          <div className="flex items-center gap-2 sm:hidden">
-            <span className={cn(mobileBadgeClassName, "border-border/70")}>
+          <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-1.5 gap-y-1 sm:hidden">
+            {periodLabels.top && periodLabels.duration ? (
+              <p
+                className="col-start-2 row-start-1 justify-self-center text-[11px] leading-none font-medium text-muted-foreground/55"
+              >
+                {periodLabels.duration}
+              </p>
+            ) : null}
+            <span
+              className={cn(mobileBadgeClassName, "col-start-1 row-start-2 border-border/70")}
+            >
               {periodLabels.bottom}
             </span>
             {periodLabels.top ? (
               <span
                 aria-hidden="true"
                 className={cn(
-                  "relative h-px min-w-0 flex-1 overflow-hidden rounded-full bg-primary/10",
+                  "relative col-start-2 row-start-2 h-px min-w-0 overflow-hidden rounded-full bg-primary/10",
                   isEstimatedEnd && "cv-timeline-segment-animated-horizontal",
                 )}
               />
@@ -134,6 +151,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
               <span
                 className={cn(
                   mobileBadgeClassName,
+                  "col-start-3 row-start-2",
                   isEstimatedEnd
                     ? "border-dotted border-border/70 text-muted-foreground/70"
                     : "border-border/70",

@@ -80,6 +80,7 @@ export const ruTranslation: TranslationResource = {
             month: "Июль",
             year: "2026",
           },
+          duration: "2 года",
           endIsEstimated: true,
         },
         location: "Офис",
@@ -101,6 +102,7 @@ export const ruTranslation: TranslationResource = {
             month: "Июль",
             year: "2024",
           },
+          duration: "9 месяцев",
         },
         location: "Удаленно",
         bullets: [
@@ -119,6 +121,7 @@ export const ruTranslation: TranslationResource = {
             month: "Сентябрь",
             year: "2023",
           },
+          duration: "1 год 7 месяцев",
         },
         location: "Удаленно",
         bullets: [

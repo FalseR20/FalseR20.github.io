@@ -25,10 +25,14 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
         <CardDescription>{t("ui.experience.description")}</CardDescription>
       </CardHeader>
       <CardContent>
-        <VStack as="ol" size="xl" className="relative">
+        <VStack
+          as="ol"
+          size="xl"
+          className="relative [--timeline-date-column:6.875rem] [--timeline-gap:1rem] [--timeline-line-column:1.25rem]"
+        >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute top-5 bottom-5 hidden w-px -translate-x-1/2 bg-border sm:left-52.5 sm:block"
+            className="pointer-events-none absolute top-5 bottom-5 hidden w-px -translate-x-1/2 bg-border sm:left-[calc(var(--timeline-date-column)+var(--timeline-gap)+(var(--timeline-line-column)/2))] sm:block"
           />
           {experience.map((item, index) => (
             <ExperienceItem
