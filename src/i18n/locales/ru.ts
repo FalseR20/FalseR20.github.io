@@ -41,9 +41,9 @@ export const ruTranslation: TranslationResource = {
   cv: {
     profile: {
       fullName: "Михаил Крупенков",
-      title: "Python Backend Developer",
+      title: "Middle Python Backend Developer",
       summary:
-        "Надежный и открытый разработчик с большим опытом работы с современными технологиями.",
+        "Python разработчик с опытом Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD и AI-интеграций. Работал над production-сервисами, мобильой публикацией и legacy-системами; открыт к remote/hybrid, English B2.",
     },
     contacts: [
       {
@@ -88,9 +88,10 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Офис",
         bullets: [
-          "Разработал ИИ-решение для поиска по эмбеддингам и интегрировал его с внутренними сервисами. Реализовал и backend, и frontend.",
-          "Разработал и выпустил мобильное приложение CAB RW, включая публикацию в AppStore.",
-          "Поддерживал и развивал крупные legacy-системы, критичные для работы БЧ.",
+          "Разработал semantic search на embeddings и интегрировал его с внутренними сервисами; реализовал Python backend и React/TypeScript frontend.",
+          "Настраивал delivery для production-сервисов: Docker, Nginx, деплой и CI/CD-процессы.",
+          "Разработал и выпустил мобильное приложение CAB RW на Flutter/Firebase, включая публикацию в App Store.",
+          "Поддерживал крупные legacy-системы, критичные для работы БЧ, включая интеграции с PostgreSQL, OracleSQL и NoSQL-хранилищами.",
         ],
       },
       {
@@ -109,7 +110,8 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Удаленно",
         bullets: [
-          "Разрабатывал backend-функциональность для крупной ресторанной платформы на Django.",
+          "Разрабатывал Django backend и REST API для крупной ресторанной платформы с использованием PostgreSQL.",
+          "Поддерживал production-функциональность, backend-тесты, Git workflow и CI/CD-процессы.",
         ],
       },
       {
@@ -128,9 +130,9 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Удаленно",
         bullets: [
-          "Разрабатывал backend-сервисы для ИИ-пайплайнов и связанных процессов автоматизации.",
-          "Разработал сервис на Flask для перевода и предобработки форматов знаний.",
-          "Участвовал в разработке Python-библиотек.",
+          "Разрабатывал Python backend-сервисы для AI pipelines и связанных процессов автоматизации.",
+          "Разрабатывал Flask-сервис для перевода и предобработки форматов знаний, включая тестирование и поддержку фоновой обработки.",
+          "Участвовал в разработке Python-библиотек и async/background processing для внутренних продуктов.",
         ],
       },
     ],
@@ -142,7 +144,7 @@ export const ruTranslation: TranslationResource = {
       },
       {
         institution: "Kaspersky Lab",
-        degree: "Безопасность",
+        degree: "Базовая программа по кибербезопасности",
         period: "2025",
       },
     ],
@@ -158,9 +160,36 @@ export const ruTranslation: TranslationResource = {
           "Django",
           "FastAPI",
           "Litestar",
-          "SQL и NoSQL",
-          "Навыки деплоя",
+          "Flask",
+          "REST API",
+          "Git",
+          "PostgreSQL",
+          "SQL/NoSQL",
         ],
+      },
+      {
+        title: "Архитектура",
+        items: ["System design", "API design", "Clean Architecture"],
+      },
+      {
+        title: "Инфраструктура",
+        items: [
+          "Redis",
+          "Celery/RabbitMQ",
+          "Docker",
+          "CI/CD",
+          "Nginx",
+          "Kubernetes",
+          "Cloud platforms",
+        ],
+      },
+      {
+        title: "Тестирование",
+        items: ["pytest", "Unit/integration tests", "Code review"],
+      },
+      {
+        title: "AI/LLM",
+        items: ["RAG", "LLMs", "Coding LLMs"],
       },
       {
         title: "Frontend",
@@ -168,17 +197,7 @@ export const ruTranslation: TranslationResource = {
       },
       {
         title: "Mobile",
-        items: ["Dart", "Flutter", "Firebase", "Apple developer"],
-      },
-      {
-        title: "Общее",
-        items: [
-          "Git",
-          "Coding LLMs",
-          "CI-автоматизация",
-          "Nginx",
-          "Облачные платформы",
-        ],
+        items: ["Dart", "Flutter", "Firebase", "Apple Developer"],
       },
     ],
   },

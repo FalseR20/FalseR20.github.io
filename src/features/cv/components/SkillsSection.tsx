@@ -24,7 +24,7 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
           <CardSurface
             key={group.title}
             size="compact"
-            className="grid gap-3 md:grid-cols-[10rem_minmax(0,1fr)] md:items-center"
+            className="cv-print-skill-card grid gap-3 md:grid-cols-[12rem_minmax(0,1fr)] md:items-center"
           >
             <VStack size="sm">
               <CvLabel>{t("ui.skills.domain")}</CvLabel>

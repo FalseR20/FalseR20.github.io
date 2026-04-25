@@ -41,9 +41,9 @@ export const enTranslation: TranslationResource = {
   cv: {
     profile: {
       fullName: "Mikhail Krupenkov",
-      title: "Python Backend Developer",
+      title: "Middle Python Backend Developer",
       summary:
-        "A reliable and open-minded developer with extensive experience in new technologies and knowledge.",
+        "Python developer, open to remote/hybrid roles. Experienced with Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD, AI integrations, mobile release delivery, and legacy systems. English B2.",
     },
     contacts: [
       {
@@ -88,9 +88,10 @@ export const enTranslation: TranslationResource = {
         },
         location: "On-site",
         bullets: [
-          "Built an ML-powered embedding search solution and integrated it with internal services across both backend and frontend layers.",
-          "Developed and deployed the CAB RW mobile application, including release delivery to the Apple App Store.",
-          "Maintained and extended large legacy systems critical to Belarusian Railway operations.",
+          "Built semantic search on embeddings and integrated it with internal services, covering Python backend and React/TypeScript frontend.",
+          "Configured production service delivery with Docker, Nginx, deployment workflows, and CI/CD processes.",
+          "Developed and released the CAB RW mobile application with Flutter/Firebase, including delivery to the Apple App Store.",
+          "Maintained large legacy systems critical to Belarusian Railway operations, including PostgreSQL, SQL, and NoSQL integrations.",
         ],
       },
       {
@@ -109,7 +110,8 @@ export const enTranslation: TranslationResource = {
         },
         location: "Remote",
         bullets: [
-          "Developed backend functionality for a large Django-based restaurant platform.",
+          "Developed Django backend and REST API functionality for a large restaurant platform using PostgreSQL.",
+          "Supported production features, backend testing, Git workflow, and CI/CD processes.",
         ],
       },
       {
@@ -128,9 +130,9 @@ export const enTranslation: TranslationResource = {
         },
         location: "Remote",
         bullets: [
-          "Built backend services for AI processing pipelines and related automation workflows.",
-          "Developed a Flask service for translation and preprocessing of knowledge formats.",
-          "Contributed to Python libraries.",
+          "Built Python backend services for AI pipelines and related automation workflows.",
+          "Developed a Flask service for translation and preprocessing of knowledge formats, including testing and background processing support.",
+          "Contributed to Python libraries and async/background processing for internal products.",
         ],
       },
     ],
@@ -142,7 +144,7 @@ export const enTranslation: TranslationResource = {
       },
       {
         institution: "Kaspersky Lab",
-        degree: "Security",
+        degree: "Basic Cybersecurity Program",
         period: "2025",
       },
     ],
@@ -158,9 +160,36 @@ export const enTranslation: TranslationResource = {
           "Django",
           "FastAPI",
           "Litestar",
-          "SQL & NoSQL",
-          "Deployment skills",
+          "Flask",
+          "REST API",
+          "Git",
+          "PostgreSQL",
+          "SQL/NoSQL",
         ],
+      },
+      {
+        title: "Architecture",
+        items: ["System design", "API design", "Clean Architecture"],
+      },
+      {
+        title: "Infrastructure",
+        items: [
+          "Redis",
+          "Celery/RabbitMQ",
+          "Docker",
+          "CI/CD",
+          "Nginx",
+          "Kubernetes",
+          "Cloud platforms",
+        ],
+      },
+      {
+        title: "Testing",
+        items: ["pytest", "Unit/integration tests", "Code review"],
+      },
+      {
+        title: "AI/LLM",
+        items: ["RAG", "LLMs", "Coding LLMs"],
       },
       {
         title: "Frontend",
@@ -168,17 +197,7 @@ export const enTranslation: TranslationResource = {
       },
       {
         title: "Mobile",
-        items: ["Dart", "Flutter", "Firebase", "Apple developer"],
-      },
-      {
-        title: "Common",
-        items: [
-          "Git",
-          "Coding LLMs",
-          "CI automation",
-          "Nginx",
-          "Cloud platforms",
-        ],
+        items: ["Dart", "Flutter", "Firebase", "Apple Developer"],
       },
     ],
   },
