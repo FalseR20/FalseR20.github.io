@@ -19,7 +19,7 @@ export function EducationSection({ education }: EducationSectionProps) {
   return (
     <CvSection
       title={t("ui.education.title")}
-      contentClassName="grid gap-4 lg:grid-cols-2"
+      contentClassName="cv-print-education-grid grid gap-4 lg:grid-cols-2"
     >
       {education.map((item) => (
         <CardSurface key={`${item.institution}-${item.degree}`} size="default">

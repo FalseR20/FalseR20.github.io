@@ -2,7 +2,7 @@ import type { TranslationResource } from "@/i18n/types";
 
 export const ruTranslation: TranslationResource = {
   meta: {
-    title: "Михаил Крупенков | Резюме",
+    title: "Михаил Крупенков CV",
   },
   ui: {
     localeSwitcher: {
@@ -15,6 +15,9 @@ export const ruTranslation: TranslationResource = {
       switchToDark: "Переключить на темную тему",
       light: "Светлая тема",
       dark: "Темная тема",
+    },
+    print: {
+      onlineVersion: "Актуальная версия резюме",
     },
     experience: {
       title: "Коммерческий опыт",

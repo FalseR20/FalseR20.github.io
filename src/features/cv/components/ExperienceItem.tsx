@@ -32,7 +32,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
   const mobileBadgeClassName =
     "inline-flex shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium text-muted-foreground";
   const timelineDotClassName =
-    "relative z-10 size-3 rounded-full ring-[3px] ring-background";
+    "cv-print-timeline-dot relative z-10 size-3 rounded-full ring-[3px] ring-background";
   const timelineDefaultDotClassName =
     "border border-muted-foreground bg-muted-foreground";
   const timelineEstimatedDotClassName = "border-2 border-ring bg-background";
@@ -108,7 +108,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
           <span
             aria-hidden="true"
             className={cn(
-              "relative w-1 flex-1 overflow-hidden rounded-full",
+              "cv-print-timeline-segment relative w-1 flex-1 overflow-hidden rounded-full",
               isEstimatedEnd
                 ? "cv-timeline-segment-animated bg-primary/5"
                 : "bg-primary/10",
@@ -141,7 +141,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
               <span
                 aria-hidden="true"
                 className={cn(
-                  "relative col-start-2 row-start-2 h-px min-w-0 overflow-hidden rounded-full bg-primary/10",
+                  "cv-print-timeline-segment-horizontal relative col-start-2 row-start-2 h-px min-w-0 overflow-hidden rounded-full bg-primary/10",
                   isEstimatedEnd && "cv-timeline-segment-animated-horizontal",
                 )}
               />

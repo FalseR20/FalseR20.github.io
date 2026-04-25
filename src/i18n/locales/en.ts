@@ -2,7 +2,7 @@ import type { TranslationResource } from "@/i18n/types";
 
 export const enTranslation: TranslationResource = {
   meta: {
-    title: "Mikhail Krupenkov | CV",
+    title: "Mikhail Krupenkov CV",
   },
   ui: {
     localeSwitcher: {
@@ -15,6 +15,9 @@ export const enTranslation: TranslationResource = {
       switchToDark: "Switch to dark theme",
       light: "Light theme",
       dark: "Dark theme",
+    },
+    print: {
+      onlineVersion: "Current CV version",
     },
     experience: {
       title: "Professional Experience",

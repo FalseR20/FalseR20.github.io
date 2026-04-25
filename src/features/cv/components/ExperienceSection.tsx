@@ -25,7 +25,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-5 bottom-5 hidden w-px -translate-x-1/2 bg-border sm:left-[calc(var(--timeline-date-column)+var(--timeline-gap)+(var(--timeline-line-column)/2))] sm:block"
+          className="cv-print-timeline-line pointer-events-none absolute top-5 bottom-5 hidden w-px -translate-x-1/2 bg-border sm:left-[calc(var(--timeline-date-column)+var(--timeline-gap)+(var(--timeline-line-column)/2))] sm:block"
         />
         {experience.map((item, index) => (
           <ExperienceItem

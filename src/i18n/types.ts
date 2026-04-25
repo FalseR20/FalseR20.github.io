@@ -20,6 +20,9 @@ export type TranslationResource = {
       light: string;
       dark: string;
     };
+    print: {
+      onlineVersion: string;
+    };
     experience: {
       title: string;
       description: string;

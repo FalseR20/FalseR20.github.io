@@ -29,6 +29,14 @@ const contactIcons: Record<ContactIcon, IconType> = {
   location: FiMapPin,
 };
 
+function getCurrentPageUrl() {
+  if (typeof window === "undefined") {
+    return "https://falser.dev/";
+  }
+
+  return window.location.href;
+}
+
 type ProfileSectionProps = {
   contacts: ContactItem[];
   locale: Locale;
@@ -49,12 +57,13 @@ export function ProfileSection({
   onToggleTheme,
 }: ProfileSectionProps) {
   const { t } = useTranslation();
+  const currentPageUrl = getCurrentPageUrl();
 
   return (
     <Card>
       <CardContent>
         <VStack className="gap-4 sm:gap-5 lg:gap-6">
-          <div className="flex items-center justify-end gap-2">
+          <div className="cv-print-hidden flex items-center justify-end gap-2">
             <LocaleSwitcher
               locale={locale}
               locales={locales}
@@ -145,6 +154,18 @@ export function ProfileSection({
                   </CardSurface>
                 );
               })}
+            </div>
+
+            <div className="cv-print-only -mt-3 text-right text-xs leading-5 text-muted-foreground/75">
+              <span className="font-medium">
+                {t("ui.print.onlineVersion")}:{" "}
+              </span>
+              <a
+                href={currentPageUrl}
+                className="font-medium break-all text-muted-foreground/85"
+              >
+                {currentPageUrl}
+              </a>
             </div>
           </VStack>
         </VStack>
