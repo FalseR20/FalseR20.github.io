@@ -22,6 +22,7 @@ export type TranslationResource = {
     };
     print: {
       onlineVersion: string;
+      printResume: string;
     };
     experience: {
       title: string;

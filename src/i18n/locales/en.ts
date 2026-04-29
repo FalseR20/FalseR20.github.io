@@ -18,6 +18,7 @@ export const enTranslation: TranslationResource = {
     },
     print: {
       onlineVersion: "Current CV version",
+      printResume: "Print CV",
     },
     experience: {
       title: "Professional Experience",

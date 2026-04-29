@@ -19,7 +19,7 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
       title={t("ui.skills.title")}
       description={t("ui.skills.description")}
     >
-      <VStack size="lg">
+      <VStack size="md">
         {skillGroups.map((group) => (
           <CardSurface
             key={group.title}

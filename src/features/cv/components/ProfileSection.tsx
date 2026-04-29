@@ -3,6 +3,7 @@ import type { IconType } from "react-icons";
 import {
   FiMoon,
   FiSun,
+  FiPrinter,
   FiMapPin,
   FiMail,
   FiLinkedin,
@@ -28,6 +29,8 @@ const contactIcons: Record<ContactIcon, IconType> = {
   github: FiGithub,
   location: FiMapPin,
 };
+const profileControlButtonClassName =
+  "inline-flex size-10 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground transition-all outline-none hover:bg-accent hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:hover:bg-accent/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0";
 
 function getCurrentPageUrl() {
   if (typeof window === "undefined") {
@@ -58,6 +61,9 @@ export function ProfileSection({
 }: ProfileSectionProps) {
   const { t } = useTranslation();
   const currentPageUrl = getCurrentPageUrl();
+  const handlePrint = () => {
+    window.print();
+  };
 
   return (
     <Card>
@@ -71,8 +77,17 @@ export function ProfileSection({
             />
             <button
               type="button"
+              onClick={handlePrint}
+              className={profileControlButtonClassName}
+              aria-label={t("ui.print.printResume")}
+              title={t("ui.print.printResume")}
+            >
+              <FiPrinter className="size-5" />
+            </button>
+            <button
+              type="button"
               onClick={onToggleTheme}
-              className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground transition-all outline-none hover:bg-accent hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:hover:bg-accent/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+              className={profileControlButtonClassName}
               aria-label={
                 theme === "dark"
                   ? t("ui.themeSwitcher.switchToLight")
