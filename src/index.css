@@ -96,9 +96,9 @@
 @media print {
   :root,
   .dark {
-    --background: oklch(0.965 0.004 95);
+    --background: white;
     --foreground: oklch(0.18 0.01 95);
-    --card: oklch(0.985 0.002 95);
+    --card: white;
     --card-foreground: oklch(0.18 0.01 95);
     --primary: oklch(0.205 0 0);
     --primary-foreground: oklch(0.985 0 0);
@@ -132,12 +132,21 @@
     background: white;
   }
 
+  [data-slot="card"],
+  [data-slot="card-surface"] {
+    background: white !important;
+  }
+
   .cv-print-only {
     display: block !important;
   }
 
   .cv-print-hidden {
     display: none !important;
+  }
+
+  .cv-print-profile-heading {
+    text-align: left !important;
   }
 
   .cv-print-education-grid {

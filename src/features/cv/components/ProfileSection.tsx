@@ -108,7 +108,10 @@ export function ProfileSection({
           </div>
 
           <VStack size="2xl">
-            <VStack size="md" className="text-center lg:text-left">
+            <VStack
+              size="md"
+              className="cv-print-profile-heading text-center lg:text-left"
+            >
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
                 {profile.fullName}
               </h1>

@@ -44,7 +44,7 @@ export const ruTranslation: TranslationResource = {
       fullName: "Михаил Крупенков",
       title: "Middle Python Backend Developer",
       summary:
-        "Python разработчик с опытом Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD и AI-интеграций. Работал над production-сервисами, мобильой публикацией и legacy-системами; открыт к remote/hybrid, English B2.",
+        "Python разработчик с опытом Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD и AI-интеграций. Работал над production-сервисами, мобильной публикацией и legacy-системами; открыт к remote/hybrid, English B2.",
     },
     contacts: [
       {
