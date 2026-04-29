@@ -25,8 +25,11 @@ export const ruTranslation: TranslationResource = {
       description: "История занятости от самой новой роли к более ранним.",
     },
     education: {
-      title: "Образование и сертификация",
-      institution: "Учебное заведение или курс",
+      title: "Образование",
+      labels: {
+        education: "Учебное заведение",
+        certification: "Курс",
+      },
     },
     languages: {
       title: "Языки",
@@ -139,11 +142,13 @@ export const ruTranslation: TranslationResource = {
     ],
     education: [
       {
+        type: "education",
         institution: "БрГТУ",
         degree: "Программное обеспечение информационных технологий",
         period: "2020 - 2024",
       },
       {
+        type: "certification",
         institution: "Kaspersky Lab",
         degree: "Базовая программа по кибербезопасности",
         period: "2025",

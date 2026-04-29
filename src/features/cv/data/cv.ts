@@ -4,6 +4,7 @@ export type {
   CvData,
   CvProfile,
   EducationItem,
+  EducationItemType,
   ExperienceDate,
   ExperienceItem,
   ExperiencePeriod,

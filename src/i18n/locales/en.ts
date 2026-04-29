@@ -26,8 +26,11 @@ export const enTranslation: TranslationResource = {
         "Employment history listed from most recent to earlier roles.",
     },
     education: {
-      title: "Education & Certifications",
-      institution: "Institution",
+      title: "Education",
+      labels: {
+        education: "Institution",
+        certification: "Course",
+      },
     },
     languages: {
       title: "Languages",
@@ -139,11 +142,13 @@ export const enTranslation: TranslationResource = {
     ],
     education: [
       {
+        type: "education",
         institution: "Brest State Technical University",
         degree: "Computer Science",
         period: "2020 - 2024",
       },
       {
+        type: "certification",
         institution: "Kaspersky Lab",
         degree: "Basic Cybersecurity Program",
         period: "2025",

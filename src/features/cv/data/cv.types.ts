@@ -33,7 +33,10 @@ export type ExperienceItem = {
   bullets: string[];
 };
 
+export type EducationItemType = "education" | "certification";
+
 export type EducationItem = {
+  type: EducationItemType;
   institution: string;
   degree: string;
   period: string;

@@ -10,35 +10,46 @@ import { VStack } from "@/components/ui/layout";
 import type { EducationItem } from "@/features/cv/data/cv";
 
 type EducationSectionProps = {
+  className?: string;
   education: EducationItem[];
 };
 
-export function EducationSection({ education }: EducationSectionProps) {
+export function EducationSection({
+  className,
+  education,
+}: EducationSectionProps) {
   const { t } = useTranslation();
+  const educationLabels = {
+    education: t("ui.education.labels.education"),
+    certification: t("ui.education.labels.certification"),
+  } satisfies Record<EducationItem["type"], string>;
 
   return (
-    <CvSection
-      title={t("ui.education.title")}
-      contentClassName="cv-print-education-grid grid gap-2 lg:grid-cols-2"
-    >
-      {education.map((item) => (
-        <CardSurface key={`${item.institution}-${item.degree}`} size="default">
-          <VStack size="sm">
-            <div className="flex flex-wrap items-start justify-between gap-2 border-b border-border/70 pb-2.5">
-              <VStack size="sm">
-                <CvLabel>{t("ui.education.institution")}</CvLabel>
-                <p className="text-base font-medium sm:text-lg">
-                  {item.institution}
-                </p>
+    <CvSection className={className} title={t("ui.education.title")}>
+      <ul className="grid gap-2">
+        {education.map((item) => (
+          <CardSurface
+            as="li"
+            key={`${item.institution}-${item.degree}`}
+            size="inline"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <VStack className="min-w-0" size="xs">
+                <CvLabel>{educationLabels[item.type]}</CvLabel>
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                  <p className="text-base font-medium sm:text-lg">
+                    {item.institution}
+                  </p>
+                  <p className="text-sm leading-5 text-foreground/80">
+                    {item.degree}
+                  </p>
+                </div>
               </VStack>
-              <CvBadge>{item.period}</CvBadge>
+              <CvBadge className="shrink-0">{item.period}</CvBadge>
             </div>
-            <p className="text-sm leading-7 text-foreground/85 sm:text-base">
-              {item.degree}
-            </p>
-          </VStack>
-        </CardSurface>
-      ))}
+          </CardSurface>
+        ))}
+      </ul>
     </CvSection>
   );
 }

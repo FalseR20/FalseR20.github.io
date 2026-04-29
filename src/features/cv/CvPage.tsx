@@ -37,8 +37,10 @@ export function CvPage() {
           onToggleTheme={toggleTheme}
         />
         <ExperienceSection experience={experience} />
-        <EducationSection education={education} />
-        <LanguagesSection languages={languages} />
+        <div className="cv-print-education-languages-grid grid gap-4 lg:grid-cols-[5fr_2fr]">
+          <EducationSection className="h-full" education={education} />
+          <LanguagesSection className="h-full" languages={languages} />
+        </div>
         <SkillsSection skillGroups={skillGroups} />
       </SectionStack>
     </div>

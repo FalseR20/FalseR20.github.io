@@ -30,7 +30,10 @@ export type TranslationResource = {
     };
     education: {
       title: string;
-      institution: string;
+      labels: {
+        education: string;
+        certification: string;
+      };
     };
     languages: {
       title: string;

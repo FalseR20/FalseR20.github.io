@@ -10,15 +10,19 @@ import { VStack } from "@/components/ui/layout";
 import type { LanguageItem } from "@/features/cv/data/cv";
 
 type LanguagesSectionProps = {
+  className?: string;
   languages: LanguageItem[];
 };
 
-export function LanguagesSection({ languages }: LanguagesSectionProps) {
+export function LanguagesSection({
+  className,
+  languages,
+}: LanguagesSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <CvSection title={t("ui.languages.title")}>
-      <ul className="grid gap-2 sm:grid-cols-2">
+    <CvSection className={className} title={t("ui.languages.title")}>
+      <ul className="grid gap-2">
         {languages.map((language) => (
           <CardSurface as="li" key={language.name} size="inline">
             <div className="flex items-start justify-between gap-3">
