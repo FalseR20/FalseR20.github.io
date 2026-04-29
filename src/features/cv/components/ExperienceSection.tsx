@@ -16,11 +16,11 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
     <CvSection
       title={t("ui.experience.title")}
       description={t("ui.experience.description")}
-      headerClassName="gap-3"
+      headerClassName="gap-2"
     >
       <VStack
         as="ol"
-        size="xl"
+        size="sm"
         className="relative [--timeline-date-column:6.875rem] [--timeline-gap:1rem] [--timeline-line-column:1.25rem]"
       >
         <span

@@ -68,7 +68,7 @@ export function ProfileSection({
   return (
     <Card>
       <CardContent>
-        <VStack className="gap-4 sm:gap-5 lg:gap-6">
+        <VStack className="gap-3 sm:gap-4">
           <div className="cv-print-hidden flex items-center justify-end gap-2">
             <LocaleSwitcher
               locale={locale}
@@ -107,7 +107,7 @@ export function ProfileSection({
             </button>
           </div>
 
-          <VStack size="2xl">
+          <VStack size="lg">
             <VStack
               size="md"
               className="cv-print-profile-heading text-center lg:text-left"
@@ -123,7 +123,7 @@ export function ProfileSection({
               </p>
             </VStack>
 
-            <div className="cv-print-contact-grid grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="cv-print-contact-grid grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
               {contacts.map(({ icon, label, value, href }) => {
                 const Icon = contactIcons[icon];
                 const content = (

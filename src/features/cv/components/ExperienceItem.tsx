@@ -38,7 +38,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
   const timelineEstimatedDotClassName = "border-2 border-ring bg-background";
 
   return (
-    <li className="grid grid-cols-1 gap-4 sm:grid-cols-[var(--timeline-date-column)_var(--timeline-line-column)_minmax(0,1fr)] sm:gap-(--timeline-gap)">
+    <li className="grid grid-cols-1 gap-3 sm:grid-cols-[var(--timeline-date-column)_var(--timeline-line-column)_minmax(0,1fr)] sm:gap-(--timeline-gap)">
       <div
         className={cn(
           "hidden text-right sm:flex",
@@ -122,7 +122,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
       </div>
 
       <CardSurface size="default">
-        <VStack size="lg">
+        <VStack size="md">
           <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-1.5 gap-y-1 sm:hidden">
             {periodLabels.top && periodLabels.duration ? (
               <p className="col-start-2 row-start-1 justify-self-center text-[11px] leading-none font-medium text-muted-foreground/55">
@@ -161,7 +161,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
             ) : null}
           </div>
 
-          <div className="flex flex-col gap-3 border-b border-border/70 pb-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col gap-2 border-b border-border/70 pb-3 sm:flex-row sm:items-start sm:justify-between">
             <VStack size="xs" className="min-w-0">
               <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
                 {item.role}
@@ -175,7 +175,7 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
             </p>
           </div>
 
-          <ul className="space-y-2.5 pl-5 text-sm leading-6 text-muted-foreground marker:text-foreground/60 sm:text-base">
+          <ul className="space-y-2 pl-5 text-sm leading-6 text-muted-foreground marker:text-foreground/60 sm:text-base">
             {item.bullets.map((bullet) => (
               <li key={bullet} className="list-disc">
                 {bullet}

@@ -25,7 +25,7 @@ export function CvPage() {
   }, [locale, t]);
 
   return (
-    <div className="mx-auto w-full max-w-7xl p-0 sm:p-6">
+    <div className="mx-auto w-full max-w-7xl p-0 sm:p-4">
       <SectionStack as="main">
         <ProfileSection
           contacts={contacts}

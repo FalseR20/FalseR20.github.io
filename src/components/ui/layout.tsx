@@ -54,7 +54,7 @@ export function SectionStack<T extends React.ElementType = "div">({
     <Component
       data-slot="section-stack"
       className={cn(
-        "flex flex-col *:data-[slot=card]:rounded-none *:data-[slot=card]:border-x-0 *:data-[slot=card]:border-t *:data-[slot=card]:border-b-0 *:data-[slot=card]:border-foreground/12 sm:gap-6 sm:*:data-[slot=card]:rounded-xl sm:*:data-[slot=card]:border sm:*:data-[slot=card]:border-border",
+        "flex flex-col *:data-[slot=card]:rounded-none *:data-[slot=card]:border-x-0 *:data-[slot=card]:border-t *:data-[slot=card]:border-b-0 *:data-[slot=card]:border-foreground/12 sm:gap-4 sm:*:data-[slot=card]:rounded-xl sm:*:data-[slot=card]:border sm:*:data-[slot=card]:border-border",
         className,
       )}
       {...props}

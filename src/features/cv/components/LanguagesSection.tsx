@@ -18,10 +18,10 @@ export function LanguagesSection({ languages }: LanguagesSectionProps) {
 
   return (
     <CvSection title={t("ui.languages.title")}>
-      <ul className="grid gap-3 sm:grid-cols-2">
+      <ul className="grid gap-2 sm:grid-cols-2">
         {languages.map((language) => (
           <CardSurface as="li" key={language.name} size="inline">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-3">
               <VStack size="sm">
                 <CvLabel>{t("ui.languages.label")}</CvLabel>
                 <p className="text-base font-medium sm:text-lg">
