@@ -123,7 +123,7 @@ export function ProfileSection({
               </p>
             </VStack>
 
-            <div className="grid gap-2.5 sm:grid-cols-2">
+            <div className="cv-print-contact-grid grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
               {contacts.map(({ icon, label, value, href }) => {
                 const Icon = contactIcons[icon];
                 const content = (
@@ -133,8 +133,8 @@ export function ProfileSection({
                       aria-hidden="true"
                     />
                     <div className="min-w-0">
-                      <CvLabel>{label}</CvLabel>
-                      <p className="min-w-0 text-sm font-medium break-all text-foreground sm:text-base">
+                      <CvLabel className="whitespace-nowrap">{label}</CvLabel>
+                      <p className="text-sm font-medium whitespace-nowrap text-foreground sm:text-base">
                         {value}
                       </p>
                     </div>
@@ -146,7 +146,7 @@ export function ProfileSection({
                     <CardSurface
                       key={label}
                       size="dense"
-                      className="transition-colors"
+                      className="min-w-0 transition-colors"
                     >
                       {content}
                     </CardSurface>
@@ -162,7 +162,7 @@ export function ProfileSection({
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel={href.startsWith("http") ? "noreferrer" : undefined}
                     className={cn(
-                      "block hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
+                      "block min-w-0 hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
                       "transition-colors",
                     )}
                     aria-label={`${label}: ${value}`}
