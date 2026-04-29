@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { CardSurface } from "@/components/ui/card";
-import { CvLabel, CvSection } from "@/features/cv/components/CvPrimitives";
+import { CvSection } from "@/features/cv/components/CvPrimitives";
 import { VStack } from "@/components/ui/layout";
 import type { SkillGroup } from "@/features/cv/data/cv";
 
@@ -21,25 +20,21 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
     >
       <VStack size="md">
         {skillGroups.map((group) => (
-          <CardSurface
+          <div
             key={group.title}
-            size="compact"
-            className="cv-print-skill-card grid gap-3 md:grid-cols-[12rem_minmax(0,1fr)] md:items-center"
+            className="cv-print-skill-card grid gap-2 border-b border-border/70 pb-3 last:border-b-0 last:pb-0 md:grid-cols-[12rem_minmax(0,1fr)] md:items-start"
           >
-            <VStack size="sm">
-              <CvLabel>{t("ui.skills.domain")}</CvLabel>
-              <h3 className="text-sm font-medium tracking-[0.18em] text-foreground uppercase">
-                {group.title}
-              </h3>
-            </VStack>
-            <div className="flex flex-wrap items-center gap-2 md:self-center">
+            <h3 className="pt-1 text-sm font-medium tracking-[0.18em] text-foreground uppercase">
+              {group.title}
+            </h3>
+            <div className="flex flex-wrap items-center gap-2">
               {group.items.map((skill) => (
                 <span key={skill} className={skillBadgeClassName}>
                   {skill}
                 </span>
               ))}
             </div>
-          </CardSurface>
+          </div>
         ))}
       </VStack>
     </CvSection>

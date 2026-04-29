@@ -159,7 +159,7 @@
 
   .cv-print-skill-card {
     grid-template-columns: 12rem minmax(0, 1fr) !important;
-    align-items: center !important;
+    align-items: start !important;
     break-inside: avoid;
   }
 
