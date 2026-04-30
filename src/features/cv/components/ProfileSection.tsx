@@ -10,6 +10,8 @@ import {
   FiGithub,
 } from "react-icons/fi";
 
+import profilePhotoUrl from "../../../../public/photo.jpg";
+
 import { Card, CardContent, CardSurface } from "@/components/ui/card";
 import { CvLabel } from "@/features/cv/components/CvPrimitives";
 import { VStack } from "@/components/ui/layout";
@@ -29,6 +31,7 @@ const contactIcons: Record<ContactIcon, IconType> = {
   github: FiGithub,
   location: FiMapPin,
 };
+const showProfilePhoto = true;
 const profileControlButtonClassName =
   "inline-flex size-10 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground transition-all outline-none hover:bg-accent hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:hover:bg-accent/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0";
 
@@ -108,20 +111,29 @@ export function ProfileSection({
           </div>
 
           <VStack size="lg">
-            <VStack
-              size="md"
-              className="cv-print-profile-heading text-center lg:text-left"
-            >
-              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                {profile.fullName}
-              </h1>
-              <p className="text-lg text-foreground/85 sm:text-xl">
-                {profile.title}
-              </p>
-              <p className="text-base leading-7 text-muted-foreground">
-                {profile.summary}
-              </p>
-            </VStack>
+            <div className="cv-print-profile-intro flex flex-col items-center gap-4 lg:flex-row lg:items-center lg:gap-5">
+              {showProfilePhoto ? (
+                <img
+                  src={profilePhotoUrl}
+                  alt={profile.fullName}
+                  className="cv-print-profile-photo aspect-square h-40 w-40 shrink-0 rounded-xl border border-border bg-card object-cover sm:h-44 sm:w-44 lg:h-40 lg:w-40"
+                />
+              ) : null}
+              <VStack
+                size="md"
+                className="cv-print-profile-heading min-w-0 text-center lg:text-left"
+              >
+                <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                  {profile.fullName}
+                </h1>
+                <p className="text-lg text-foreground/85 sm:text-xl">
+                  {profile.title}
+                </p>
+                <p className="text-base leading-7 text-muted-foreground">
+                  {profile.summary}
+                </p>
+              </VStack>
+            </div>
 
             <div className="cv-print-contact-grid grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
               {contacts.map(({ icon, label, value, href }) => {
