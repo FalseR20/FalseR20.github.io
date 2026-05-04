@@ -25,15 +25,20 @@ export function EducationSection({
   } satisfies Record<EducationItem["type"], string>;
 
   return (
-    <CvSection className={className} title={t("ui.education.title")}>
-      <ul className="grid gap-2">
+    <CvSection
+      className={className}
+      title={t("ui.education.title")}
+      contentClassName="flex flex-1"
+    >
+      <ul className="grid flex-1 auto-rows-fr gap-2">
         {education.map((item) => (
           <CardSurface
             as="li"
             key={`${item.institution}-${item.degree}`}
             size="inline"
+            className="flex"
           >
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex flex-1 items-start justify-between gap-3">
               <VStack className="min-w-0" size="xs">
                 <CvLabel>{educationLabels[item.type]}</CvLabel>
                 <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">

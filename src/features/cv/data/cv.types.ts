@@ -13,10 +13,17 @@ export type ContactItem = {
   href?: string;
 };
 
-export type ExperienceDate = {
-  month: string;
-  year: string;
-};
+export type ExperienceDate =
+  | {
+      month: string;
+      year: string;
+      label?: never;
+    }
+  | {
+      label: string;
+      month?: never;
+      year?: never;
+    };
 
 export type ExperiencePeriod = {
   start: ExperienceDate;

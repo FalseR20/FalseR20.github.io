@@ -36,11 +36,7 @@ const profileControlButtonClassName =
   "inline-flex size-10 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium whitespace-nowrap text-muted-foreground transition-all outline-none hover:bg-accent hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:hover:bg-accent/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0";
 
 function getCurrentPageUrl() {
-  if (typeof window === "undefined") {
-    return "https://falser.dev/";
-  }
-
-  return window.location.href;
+  return "https://falser.dev/";
 }
 
 type ProfileSectionProps = {

@@ -13,11 +13,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <CvSection
-      title={t("ui.experience.title")}
-      description={t("ui.experience.description")}
-      headerClassName="gap-2"
-    >
+    <CvSection title={t("ui.experience.title")} headerClassName="gap-2">
       <VStack
         as="ol"
         size="sm"

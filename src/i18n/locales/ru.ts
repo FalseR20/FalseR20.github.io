@@ -2,7 +2,7 @@ import type { TranslationResource } from "@/i18n/types";
 
 export const ruTranslation: TranslationResource = {
   meta: {
-    title: "Михаил Крупенков CV",
+    title: "Михаил Крупенков Python Backend Developer",
   },
   ui: {
     localeSwitcher: {
@@ -22,7 +22,6 @@ export const ruTranslation: TranslationResource = {
     },
     experience: {
       title: "Коммерческий опыт",
-      description: "История занятости от самой новой роли к более ранним.",
     },
     education: {
       title: "Образование",
@@ -37,8 +36,6 @@ export const ruTranslation: TranslationResource = {
     },
     skills: {
       title: "Технические навыки",
-      description:
-        "Инструменты и технологии, которые были использованы в задачах.",
       domain: "Направление",
     },
   },
@@ -47,7 +44,7 @@ export const ruTranslation: TranslationResource = {
       fullName: "Михаил Крупенков",
       title: "Middle Python Backend Developer",
       summary:
-        "Python разработчик с опытом Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD и AI-интеграций. Работал над production-сервисами, мобильной публикацией и legacy-системами; открыт к remote/hybrid, English B2.",
+        "Python Backend Developer с 4+ годами коммерческого опыта в production API, backend-интеграциях и обслуживании legacy. Основной стек: Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD, Celery, Redis, RabbitMQ. Есть опыт AI-интеграций: semantic search, LLM integrations. English B2; открыт к remote/hybrid.",
     },
     contacts: [
       {
@@ -76,26 +73,25 @@ export const ruTranslation: TranslationResource = {
     ],
     experience: [
       {
-        company: "Беларуская чыгунка",
-        role: "Middle Fullstack Developer",
+        company: "Белорусская железная дорога",
+        role: "Middle Python Backend Developer",
         period: {
           start: {
             month: "Июль",
             year: "2024",
           },
           end: {
-            month: "Июль",
-            year: "2026",
+            label: "Сейчас",
           },
-          duration: "2 года",
+          duration: "1 год 10 месяцев из 2 лет",
           endIsEstimated: true,
         },
         location: "Офис",
         bullets: [
-          "Разработал semantic search на embeddings и интегрировал его с внутренними сервисами; реализовал Python backend и React/TypeScript frontend.",
-          "Настраивал delivery для production-сервисов: Docker, Nginx, деплой и CI/CD-процессы.",
-          "Разработал и выпустил мобильное приложение CAB RW на Flutter/Firebase, включая публикацию в App Store.",
-          "Поддерживал крупные legacy-системы, критичные для работы БЧ, включая интеграции с PostgreSQL, OracleSQL и NoSQL-хранилищами.",
+          "Разработал сервис семантического поиска на embeddings и интегрировал его с внутренними системами; отвечал за Python API и вспомогательный React/TypeScript интерфейс.",
+          "Настроил поставку production-сервисов: Docker, Nginx, CI/CD и воспроизводимые процессы деплоя.",
+          "Довел мобильное приложение CAB RW на Flutter/Firebase до релиза в Apple App Store, включая backend-интеграции.",
+          "Поддерживал критичные legacy-системы для операционных процессов БЧ, работал с PostgreSQL, Oracle Database, SQL и NoSQL-интеграциями.",
         ],
       },
       {
@@ -114,8 +110,8 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Удаленно",
         bullets: [
-          "Разрабатывал Django backend и REST API для крупной ресторанной платформы с использованием PostgreSQL.",
-          "Поддерживал production-функциональность, backend-тесты, Git workflow и CI/CD-процессы.",
+          "Разрабатывал backend-функциональность на Django и REST API для крупной ресторанной платформы на PostgreSQL.",
+          "Поддерживал production-функции, backend-тесты, Git workflow, code review и CI/CD-процессы.",
         ],
       },
       {
@@ -134,9 +130,9 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Удаленно",
         bullets: [
-          "Разрабатывал Python backend-сервисы для AI pipelines и связанных процессов автоматизации.",
-          "Разрабатывал Flask-сервис для перевода и предобработки форматов знаний, включая тестирование и поддержку фоновой обработки.",
-          "Участвовал в разработке Python-библиотек и async/background processing для внутренних продуктов.",
+          "Разрабатывал backend-сервисы на Python для AI-пайплайнов, автоматизации и внутренних интеграций.",
+          "Создал Flask-сервис для перевода и предобработки форматов баз знаний, добавил тесты и поддержку фоновой обработки.",
+          "Участвовал в развитии внутренних Python-библиотек и асинхронной фоновой обработки для продуктовых команд.",
         ],
       },
     ],
@@ -167,43 +163,48 @@ export const ruTranslation: TranslationResource = {
           "FastAPI",
           "Litestar",
           "Flask",
-          "REST API",
-          "Git",
+          "REST APIs",
+          "API integrations",
           "PostgreSQL",
-          "SQL/NoSQL",
+          "SQL",
+          "NoSQL",
         ],
       },
       {
-        title: "Архитектура",
-        items: ["System design", "API design", "Clean Architecture"],
+        title: "Асинхронность",
+        items: ["asyncio", "Celery", "RabbitMQ", "Redis"],
+      },
+      {
+        title: "Инженерия",
+        items: [
+          "System design",
+          "API design",
+          "Clean Architecture",
+          "Git",
+          "pytest",
+          "Unit/integration tests",
+          "Code review",
+        ],
       },
       {
         title: "Инфраструктура",
+        items: ["Docker", "Nginx", "CI/CD", "Kubernetes", "Cloud"],
+      },
+      {
+        title: "AI & Search",
+        items: ["Coding LLMs", "Semantic search", "LLM integrations"],
+      },
+      {
+        title: "Дополнительно",
         items: [
-          "Redis",
-          "Celery/RabbitMQ",
-          "Docker",
-          "CI/CD",
-          "Nginx",
-          "Kubernetes",
-          "Cloud platforms",
+          "TypeScript",
+          "React",
+          "Tailwind",
+          "Dart",
+          "Flutter",
+          "Firebase",
+          "Apple App Store",
         ],
-      },
-      {
-        title: "Тестирование",
-        items: ["pytest", "Unit/integration tests", "Code review"],
-      },
-      {
-        title: "AI/LLM",
-        items: ["RAG", "LLMs", "Coding LLMs"],
-      },
-      {
-        title: "Frontend",
-        items: ["TypeScript", "React", "Bootstrap", "Tailwind"],
-      },
-      {
-        title: "Mobile",
-        items: ["Dart", "Flutter", "Firebase", "Apple Developer"],
       },
     ],
   },

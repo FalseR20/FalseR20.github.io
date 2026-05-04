@@ -26,7 +26,6 @@ export type TranslationResource = {
     };
     experience: {
       title: string;
-      description: string;
     };
     education: {
       title: string;
@@ -41,7 +40,6 @@ export type TranslationResource = {
     };
     skills: {
       title: string;
-      description: string;
       domain: string;
     };
   };

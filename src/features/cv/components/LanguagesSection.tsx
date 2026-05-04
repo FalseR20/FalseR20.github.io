@@ -21,11 +21,20 @@ export function LanguagesSection({
   const { t } = useTranslation();
 
   return (
-    <CvSection className={className} title={t("ui.languages.title")}>
-      <ul className="grid gap-2">
+    <CvSection
+      className={className}
+      title={t("ui.languages.title")}
+      contentClassName="flex flex-1"
+    >
+      <ul className="grid flex-1 auto-rows-fr gap-2">
         {languages.map((language) => (
-          <CardSurface as="li" key={language.name} size="inline">
-            <div className="flex items-start justify-between gap-3">
+          <CardSurface
+            as="li"
+            key={language.name}
+            size="inline"
+            className="flex"
+          >
+            <div className="flex flex-1 items-start justify-between gap-3">
               <VStack size="sm">
                 <CvLabel>{t("ui.languages.label")}</CvLabel>
                 <p className="text-base font-medium sm:text-lg">

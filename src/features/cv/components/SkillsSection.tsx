@@ -14,15 +14,12 @@ export function SkillsSection({ skillGroups }: SkillsSectionProps) {
     "inline-flex min-w-0 max-w-full items-center rounded-full border bg-secondary px-3 py-1 text-xs leading-5 font-semibold text-secondary-foreground";
 
   return (
-    <CvSection
-      title={t("ui.skills.title")}
-      description={t("ui.skills.description")}
-    >
-      <VStack size="md">
+    <CvSection title={t("ui.skills.title")}>
+      <VStack size="sm">
         {skillGroups.map((group) => (
           <div
             key={group.title}
-            className="cv-print-skill-card grid gap-2 border-b border-border/70 pb-3 last:border-b-0 last:pb-0 md:grid-cols-[12rem_minmax(0,1fr)] md:items-start"
+            className="cv-print-skill-card grid gap-2 md:grid-cols-[12rem_minmax(0,1fr)] md:items-start"
           >
             <h3 className="pt-1 text-sm font-medium tracking-[0.18em] text-foreground uppercase">
               {group.title}

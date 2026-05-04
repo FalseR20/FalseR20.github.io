@@ -2,7 +2,7 @@ import type { TranslationResource } from "@/i18n/types";
 
 export const enTranslation: TranslationResource = {
   meta: {
-    title: "Mikhail Krupenkov CV",
+    title: "Mikhail Krupenkov Middle Python Backend Developer",
   },
   ui: {
     localeSwitcher: {
@@ -22,8 +22,6 @@ export const enTranslation: TranslationResource = {
     },
     experience: {
       title: "Professional Experience",
-      description:
-        "Employment history listed from most recent to earlier roles.",
     },
     education: {
       title: "Education",
@@ -38,7 +36,6 @@ export const enTranslation: TranslationResource = {
     },
     skills: {
       title: "Technical Skills",
-      description: "Tools and technologies used across work.",
       domain: "Domain",
     },
   },
@@ -47,7 +44,7 @@ export const enTranslation: TranslationResource = {
       fullName: "Mikhail Krupenkov",
       title: "Middle Python Backend Developer",
       summary:
-        "Python developer, open to remote/hybrid roles. Experienced with Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD, AI integrations, mobile release delivery, and legacy systems. English B2.",
+        "Python Backend Developer with 4+ years of commercial experience in production APIs, backend integrations, and legacy modernization. Core stack: Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD, Celery, Redis, RabbitMQ. Experienced in AI integrations: semantic search, LLM integrations. English B2; open to remote/hybrid roles.",
     },
     contacts: [
       {
@@ -77,25 +74,24 @@ export const enTranslation: TranslationResource = {
     experience: [
       {
         company: "Belarusian Railway",
-        role: "Middle Fullstack Developer",
+        role: "Middle Python Backend Developer",
         period: {
           start: {
             month: "July",
             year: "2024",
           },
           end: {
-            month: "July",
-            year: "2026",
+            label: "Present",
           },
-          duration: "2 years",
+          duration: "1 year 10 months of 2 years",
           endIsEstimated: true,
         },
         location: "On-site",
         bullets: [
-          "Built semantic search on embeddings and integrated it with internal services, covering Python backend and React/TypeScript frontend.",
-          "Configured production service delivery with Docker, Nginx, deployment workflows, and CI/CD processes.",
-          "Developed and released the CAB RW mobile application with Flutter/Firebase, including delivery to the Apple App Store.",
-          "Maintained large legacy systems critical to Belarusian Railway operations, including PostgreSQL, SQL, and NoSQL integrations.",
+          "Built an embeddings-based semantic search service and integrated it with internal systems; owned the Python APIs and supporting React/TypeScript interface.",
+          "Containerized and delivered production services with Docker, Nginx, CI/CD pipelines, and repeatable deployment workflows.",
+          "Shipped the CAB RW Flutter/Firebase app through release to the Apple App Store, coordinating backend integration and production delivery.",
+          "Maintained mission-critical legacy systems for railway operations, working with PostgreSQL, Oracle Database, SQL, and NoSQL integrations.",
         ],
       },
       {
@@ -114,8 +110,8 @@ export const enTranslation: TranslationResource = {
         },
         location: "Remote",
         bullets: [
-          "Developed Django backend and REST API functionality for a large restaurant platform using PostgreSQL.",
-          "Supported production features, backend testing, Git workflow, and CI/CD processes.",
+          "Developed Django backend features and REST APIs for a large restaurant platform using PostgreSQL.",
+          "Supported production functionality, backend tests, Git workflow, code review, and CI/CD processes.",
         ],
       },
       {
@@ -134,9 +130,9 @@ export const enTranslation: TranslationResource = {
         },
         location: "Remote",
         bullets: [
-          "Built Python backend services for AI pipelines and related automation workflows.",
-          "Developed a Flask service for translation and preprocessing of knowledge formats, including testing and background processing support.",
-          "Contributed to Python libraries and async/background processing for internal products.",
+          "Built Python backend services for AI pipelines, automation workflows, and internal integrations.",
+          "Developed a Flask service for translation and preprocessing of knowledge-base formats, with tests and background-processing support.",
+          "Contributed to internal Python libraries and async/background job processing used across products.",
         ],
       },
     ],
@@ -144,7 +140,7 @@ export const enTranslation: TranslationResource = {
       {
         type: "education",
         institution: "Brest State Technical University",
-        degree: "Computer Science",
+        degree: "Software Engineering",
         period: "2020 - 2024",
       },
       {
@@ -167,43 +163,48 @@ export const enTranslation: TranslationResource = {
           "FastAPI",
           "Litestar",
           "Flask",
-          "REST API",
-          "Git",
+          "REST APIs",
+          "API integrations",
           "PostgreSQL",
-          "SQL/NoSQL",
+          "SQL",
+          "NoSQL",
         ],
       },
       {
-        title: "Architecture",
-        items: ["System design", "API design", "Clean Architecture"],
+        title: "Async",
+        items: ["asyncio", "Celery", "RabbitMQ", "Redis"],
       },
       {
         title: "Infrastructure",
+        items: ["Docker", "Nginx", "CI/CD", "Kubernetes", "Cloud"],
+      },
+      {
+        title: "Engineering",
         items: [
-          "Redis",
-          "Celery/RabbitMQ",
-          "Docker",
-          "CI/CD",
-          "Nginx",
-          "Kubernetes",
-          "Cloud platforms",
+          "System design",
+          "API design",
+          "Clean Architecture",
+          "Git",
+          "pytest",
+          "Unit/integration tests",
+          "Code review",
         ],
       },
       {
-        title: "Testing",
-        items: ["pytest", "Unit/integration tests", "Code review"],
+        title: "AI & Search",
+        items: ["Coding LLMs", "Semantic search", "LLM integrations"],
       },
       {
-        title: "AI/LLM",
-        items: ["RAG", "LLMs", "Coding LLMs"],
-      },
-      {
-        title: "Frontend",
-        items: ["TypeScript", "React", "Bootstrap", "Tailwind"],
-      },
-      {
-        title: "Mobile",
-        items: ["Dart", "Flutter", "Firebase", "Apple Developer"],
+        title: "Additional",
+        items: [
+          "TypeScript",
+          "React",
+          "Tailwind",
+          "Dart",
+          "Flutter",
+          "Firebase",
+          "Apple App Store",
+        ],
       },
     ],
   },

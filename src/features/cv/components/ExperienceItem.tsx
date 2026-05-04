@@ -14,6 +14,10 @@ type ExperienceItemProps = {
 };
 
 function formatPeriodDate(date: ExperienceDate) {
+  if (date.label) {
+    return date.label;
+  }
+
   return `${date.month} ${date.year}`;
 }
 
