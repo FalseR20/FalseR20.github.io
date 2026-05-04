@@ -90,7 +90,7 @@ export const enTranslation: TranslationResource = {
         bullets: [
           "Built an embeddings-based semantic search service and integrated it with internal systems; owned the Python APIs and supporting React/TypeScript interface.",
           "Containerized and delivered production services with Docker, Nginx, CI/CD pipelines, and repeatable deployment workflows.",
-          "Shipped the CAB RW Flutter/Firebase app through release to the Apple App Store, coordinating backend integration and production delivery.",
+          "Delivered the CAB RW Flutter/Firebase app to the Apple App Store, handling backend integrations and production release support.",
           "Maintained mission-critical legacy systems for railway operations, working with PostgreSQL, Oracle Database, SQL, and NoSQL integrations.",
         ],
       },
@@ -110,8 +110,8 @@ export const enTranslation: TranslationResource = {
         },
         location: "Remote",
         bullets: [
-          "Developed Django backend features and REST APIs for a large restaurant platform using PostgreSQL.",
-          "Supported production functionality, backend tests, Git workflow, code review, and CI/CD processes.",
+          "Developed Django backend features and REST APIs for a large restaurant platform, working with business logic, PostgreSQL data models, and production functionality.",
+          "Maintained backend tests, participated in code review and Git workflow, and supported CI/CD-based delivery processes.",
         ],
       },
       {

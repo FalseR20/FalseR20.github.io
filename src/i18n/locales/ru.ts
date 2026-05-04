@@ -89,7 +89,7 @@ export const ruTranslation: TranslationResource = {
         location: "Офис",
         bullets: [
           "Разработал сервис семантического поиска на embeddings и интегрировал его с внутренними системами; отвечал за Python API и вспомогательный React/TypeScript интерфейс.",
-          "Настроил поставку production-сервисов: Docker, Nginx, CI/CD и воспроизводимые процессы деплоя.",
+          "Настроил delivery production-сервисов: Docker, Nginx, CI/CD и воспроизводимые процессы деплоя.",
           "Довел мобильное приложение CAB RW на Flutter/Firebase до релиза в Apple App Store, включая backend-интеграции.",
           "Поддерживал критичные legacy-системы для операционных процессов БЧ, работал с PostgreSQL, Oracle Database, SQL и NoSQL-интеграциями.",
         ],
@@ -110,7 +110,7 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Удаленно",
         bullets: [
-          "Разрабатывал backend-функциональность на Django и REST API для крупной ресторанной платформы на PostgreSQL.",
+          "Разрабатывал backend-функциональность на Django и REST API для крупной ресторанной платформы: бизнес-логику, интеграции и работу с PostgreSQL.",
           "Поддерживал production-функции, backend-тесты, Git workflow, code review и CI/CD-процессы.",
         ],
       },
