@@ -140,7 +140,7 @@ export const enTranslation: TranslationResource = {
       {
         type: "education",
         institution: "Brest State Technical University",
-        degree: "Software Engineering",
+        degree: "Computer Science",
         period: "2020 - 2024",
       },
       {
