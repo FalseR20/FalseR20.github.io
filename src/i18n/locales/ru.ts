@@ -81,10 +81,10 @@ export const ruTranslation: TranslationResource = {
             year: "2024",
           },
           end: {
-            label: "Сейчас",
+            month: "Июль",
+            year: "2026",
           },
-          duration: "1 год 10 месяцев из 2 лет",
-          endIsEstimated: true,
+          duration: "2 года",
         },
         location: "Офис",
         bullets: [

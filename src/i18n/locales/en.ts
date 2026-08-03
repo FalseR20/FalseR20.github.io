@@ -81,10 +81,10 @@ export const enTranslation: TranslationResource = {
             year: "2024",
           },
           end: {
-            label: "Present",
+            month: "July",
+            year: "2026",
           },
-          duration: "1 year 10 months of 2 years",
-          endIsEstimated: true,
+          duration: "2 years",
         },
         location: "On-site",
         bullets: [
