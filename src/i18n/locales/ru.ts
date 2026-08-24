@@ -44,7 +44,7 @@ export const ruTranslation: TranslationResource = {
       fullName: "Михаил Крупенков",
       title: "Middle Python Backend Developer",
       summary:
-        "Python Backend Developer с 4+ годами коммерческого опыта в production API, backend-интеграциях и обслуживании legacy. Основной стек: Django, FastAPI/Litestar, PostgreSQL, Docker, CI/CD, Celery, Redis, RabbitMQ. Есть опыт AI-интеграций: semantic search, LLM integrations. English B2; открыт к remote/hybrid.",
+        "Python Backend Developer с 4+ годами коммерческого опыта в production API, backend-интеграциях и обслуживании legacy. Основной стек: Django/DRF, FastAPI/Litestar, PostgreSQL, SQLAlchemy, Docker, CI/CD, Celery, Redis, RabbitMQ, Kafka. Есть опыт AI-интеграций: semantic search, LLM integrations. English B2; открыт к remote/hybrid.",
     },
     contacts: [
       {
@@ -156,54 +156,44 @@ export const ruTranslation: TranslationResource = {
     ],
     skillGroups: [
       {
-        title: "Backend",
+        title: "Core",
         items: [
           "Python",
           "Django",
+          "Django REST Framework",
           "FastAPI",
           "Litestar",
-          "Flask",
-          "REST APIs",
-          "API integrations",
-          "PostgreSQL",
-          "SQL",
-          "NoSQL",
-        ],
-      },
-      {
-        title: "Асинхронность",
-        items: ["asyncio", "Celery", "RabbitMQ", "Redis"],
-      },
-      {
-        title: "Инженерия",
-        items: [
-          "System design",
-          "API design",
-          "Clean Architecture",
-          "Git",
+          "Pydantic",
+          "asyncio",
+          "OpenAPI",
           "pytest",
-          "Unit/integration tests",
-          "Code review",
+          "Docker",
+          "Git",
+          "CI/CD",
         ],
       },
       {
-        title: "Инфраструктура",
-        items: ["Docker", "Nginx", "CI/CD", "Kubernetes", "Cloud"],
+        title: "Brokers",
+        items: ["Kafka", "RabbitMQ", "Redis", "Celery"],
       },
       {
-        title: "AI & Search",
-        items: ["Coding LLMs", "Semantic search", "LLM integrations"],
+        title: "Database",
+        items: ["PostgreSQL", "SQLAlchemy", "Alembic", "Django ORM", "MongoDB"],
+      },
+      {
+        title: "Monitoring",
+        items: ["Prometheus", "Grafana", "Sentry", "OpenTelemetry", "ELK"],
       },
       {
         title: "Дополнительно",
         items: [
           "TypeScript",
           "React",
-          "Tailwind",
-          "Dart",
           "Flutter",
-          "Firebase",
-          "Apple App Store",
+          "Nginx",
+          "Kubernetes",
+          "Semantic search",
+          "LLM integrations",
         ],
       },
     ],
