@@ -44,7 +44,7 @@ export const enTranslation: TranslationResource = {
       fullName: "Mikhail Krupenkov",
       title: "Middle Python Backend Developer",
       summary:
-        "Python Backend Developer with 4+ years of commercial experience in production APIs, backend integrations, and legacy modernization. Core stack: Django/DRF, FastAPI/Litestar, PostgreSQL, SQLAlchemy, Docker, CI/CD, Celery, Redis, RabbitMQ, Kafka. Experienced in AI integrations: semantic search, LLM integrations. English B2; open to remote/hybrid roles.",
+        "Python Backend Developer with 4+ years of commercial experience in production APIs, backend integrations, and legacy modernization. Core stack: Django/DRF, FastAPI/Litestar, PostgreSQL, SQLAlchemy, Docker, CI/CD, Celery, Redis, RabbitMQ, Kafka. Experienced in AI integrations: semantic search, LLM integrations. English B1+; open to remote/hybrid roles.",
     },
     contacts: [
       {
@@ -152,7 +152,7 @@ export const enTranslation: TranslationResource = {
     ],
     languages: [
       { name: "Russian", level: "Native" },
-      { name: "English", level: "B2" },
+      { name: "English", level: "B1+" },
     ],
     skillGroups: [
       {
