@@ -44,7 +44,7 @@ export const enTranslation: TranslationResource = {
       fullName: "Mikhail Krupenkov",
       title: "Middle Python Backend Developer",
       summary:
-        "Python Backend Developer with 4+ years of commercial experience in production APIs, backend integrations, and legacy modernization. Core stack: Django/DRF, FastAPI/Litestar, PostgreSQL, SQLAlchemy, Docker, CI/CD, Celery, Redis, RabbitMQ, Kafka. Experienced in AI integrations: semantic search, LLM integrations. English B1+; open to remote/hybrid roles.",
+        "Python backend developer with 4+ years of commercial experience. At Belarusian Railway I shipped services to production, built embeddings-based semantic search, and took a mobile app to the Apple App Store. I build new Django/FastAPI backends and keep critical legacy running on PostgreSQL/Oracle. Stack: Python, Django/DRF, FastAPI, PostgreSQL, Docker, CI/CD, Celery, Redis. Open to remote, hybrid, and relocation.",
     },
     contacts: [
       {
@@ -56,24 +56,25 @@ export const enTranslation: TranslationResource = {
       {
         icon: "linkedin",
         label: "LinkedIn",
-        value: "linkedin.com/in/falser",
+        value: "falser",
         href: "https://www.linkedin.com/in/falser/",
       },
       {
         icon: "github",
         label: "GitHub",
-        value: "github.com/FalseR20",
+        value: "FalseR20",
         href: "https://github.com/FalseR20",
       },
       {
         icon: "location",
         label: "Location",
-        value: "Brest, Belarus",
+        value: "Brest · Minsk",
       },
     ],
     experience: [
       {
         company: "Belarusian Railway",
+        companyContext: "National railway operator · internal IT systems",
         role: "Middle Python Backend Developer",
         period: {
           start: {
@@ -88,14 +89,15 @@ export const enTranslation: TranslationResource = {
         },
         location: "On-site",
         bullets: [
-          "Built an embeddings-based semantic search service and integrated it with internal systems; owned the Python APIs and supporting React/TypeScript interface.",
-          "Containerized and delivered production services with Docker, Nginx, CI/CD pipelines, and repeatable deployment workflows.",
-          "Delivered the CAB RW Flutter/Firebase app to the Apple App Store, handling backend integrations and production release support.",
-          "Maintained mission-critical legacy systems for railway operations, working with PostgreSQL, Oracle Database, SQL, and NoSQL integrations.",
+          "Designed and shipped an embeddings-based semantic search service: Python API, integration with internal railway systems, and a React/TypeScript UI.",
+          "Set up production delivery for services: Docker, Nginx, CI/CD — repeatable deploys instead of manual releases.",
+          "Took the CAB RW app (Flutter/Firebase) to the Apple App Store, including backend integrations and release support.",
+          "Kept mission-critical railway operations systems running (PostgreSQL, Oracle, SQL/NoSQL) — systems that cannot go down.",
         ],
       },
       {
         company: "Atlant Software",
+        companyContext: "Restaurant platform",
         role: "Middle Python Backend Developer",
         period: {
           start: {
@@ -110,12 +112,13 @@ export const enTranslation: TranslationResource = {
         },
         location: "Remote",
         bullets: [
-          "Developed Django backend features and REST APIs for a large restaurant platform, working with business logic, PostgreSQL data models, and production functionality.",
-          "Maintained backend tests, participated in code review and Git workflow, and supported CI/CD-based delivery processes.",
+          "Built Django backend features and REST APIs for a large restaurant platform: business logic, PostgreSQL models, integrations.",
+          "Owned the production quality loop: pytest, code review, Git workflow, and CI/CD delivery.",
         ],
       },
       {
         company: "Intelligent Semantic Systems",
+        companyContext: "AI / knowledge bases",
         role: "Junior Python Backend Developer",
         period: {
           start: {
@@ -130,9 +133,9 @@ export const enTranslation: TranslationResource = {
         },
         location: "Remote",
         bullets: [
-          "Built Python backend services for AI pipelines, automation workflows, and internal integrations.",
-          "Developed a Flask service for translation and preprocessing of knowledge-base formats, with tests and background-processing support.",
-          "Contributed to internal Python libraries and async/background job processing used across products.",
+          "Built Python backend services for AI pipelines, automation, and internal integrations.",
+          "Shipped a Flask service for translation and preprocessing of knowledge-base formats, with tests and background processing.",
+          "Developed internal Python libraries and async/background job processing used by product teams.",
         ],
       },
     ],
@@ -160,38 +163,44 @@ export const enTranslation: TranslationResource = {
         items: [
           "Python",
           "Django",
-          "Django REST Framework",
+          "DRF",
           "FastAPI",
           "Litestar",
+          "Flask",
           "Pydantic",
           "asyncio",
           "OpenAPI",
           "pytest",
           "Docker",
-          "Git",
           "CI/CD",
         ],
       },
       {
         title: "Brokers",
-        items: ["Kafka", "RabbitMQ", "Redis", "Celery"],
+        items: ["Redis", "Celery", "RabbitMQ", "Kafka"],
       },
       {
         title: "Database",
-        items: ["PostgreSQL", "SQLAlchemy", "Alembic", "Django ORM", "MongoDB"],
+        items: [
+          "PostgreSQL",
+          "SQLAlchemy",
+          "Alembic",
+          "Django ORM",
+          "Oracle",
+          "MongoDB",
+        ],
       },
       {
         title: "Monitoring",
-        items: ["Prometheus", "Grafana", "Sentry", "OpenTelemetry", "ELK"],
+        items: ["Prometheus", "Grafana", "Sentry"],
       },
       {
         title: "Additional",
         items: [
+          "Nginx",
           "TypeScript",
           "React",
           "Flutter",
-          "Nginx",
-          "Kubernetes",
           "Semantic search",
           "LLM integrations",
         ],

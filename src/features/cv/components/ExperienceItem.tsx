@@ -173,6 +173,11 @@ export function ExperienceItem({ item, isFirst, isLast }: ExperienceItemProps) {
               <p className="text-sm font-medium text-foreground/85 sm:text-base">
                 {item.company}
               </p>
+              {item.companyContext ? (
+                <p className="text-xs text-muted-foreground sm:text-sm">
+                  {item.companyContext}
+                </p>
+              ) : null}
             </VStack>
             <p className="text-xs font-medium text-muted-foreground sm:pt-1 sm:text-right sm:text-sm">
               {item.location}

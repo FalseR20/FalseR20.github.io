@@ -34,6 +34,7 @@ export type ExperiencePeriod = {
 
 export type ExperienceItem = {
   company: string;
+  companyContext?: string;
   role: string;
   period: ExperiencePeriod;
   location: string;

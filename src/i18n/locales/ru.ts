@@ -2,7 +2,7 @@ import type { TranslationResource } from "@/i18n/types";
 
 export const ruTranslation: TranslationResource = {
   meta: {
-    title: "Михаил Крупенков Python Backend Developer",
+    title: "Михаил Крупенков Middle Python Backend Developer",
   },
   ui: {
     localeSwitcher: {
@@ -44,7 +44,7 @@ export const ruTranslation: TranslationResource = {
       fullName: "Михаил Крупенков",
       title: "Middle Python Backend Developer",
       summary:
-        "Python Backend Developer с 4+ годами коммерческого опыта в production API, backend-интеграциях и обслуживании legacy. Основной стек: Django/DRF, FastAPI/Litestar, PostgreSQL, SQLAlchemy, Docker, CI/CD, Celery, Redis, RabbitMQ, Kafka. Есть опыт AI-интеграций: semantic search, LLM integrations. English B1+; открыт к remote/hybrid.",
+        "Python backend-разработчик с 4+ годами коммерческого опыта. В Белорусской железной дороге запускал сервисы в production, сделал семантический поиск на embeddings и довёл мобильное приложение до Apple App Store. Собираю новый backend на Django/FastAPI и держу критичный legacy на PostgreSQL/Oracle. Стек: Python, Django/DRF, FastAPI, PostgreSQL, Docker, CI/CD, Celery, Redis. Открыт к удалёнке, гибриду и переезду.",
     },
     contacts: [
       {
@@ -56,24 +56,25 @@ export const ruTranslation: TranslationResource = {
       {
         icon: "linkedin",
         label: "LinkedIn",
-        value: "linkedin.com/in/falser",
+        value: "falser",
         href: "https://www.linkedin.com/in/falser/",
       },
       {
         icon: "github",
         label: "GitHub",
-        value: "github.com/FalseR20",
+        value: "FalseR20",
         href: "https://github.com/FalseR20",
       },
       {
         icon: "location",
         label: "Локация",
-        value: "Брест, Беларусь",
+        value: "Брест · Минск",
       },
     ],
     experience: [
       {
         company: "Белорусская железная дорога",
+        companyContext: "Национальный перевозчик · внутренние IT-системы",
         role: "Middle Python Backend Developer",
         period: {
           start: {
@@ -88,14 +89,15 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Офис",
         bullets: [
-          "Разработал сервис семантического поиска на embeddings и интегрировал его с внутренними системами; отвечал за Python API и вспомогательный React/TypeScript интерфейс.",
-          "Настроил delivery production-сервисов: Docker, Nginx, CI/CD и воспроизводимые процессы деплоя.",
-          "Довел мобильное приложение CAB RW на Flutter/Firebase до релиза в Apple App Store, включая backend-интеграции.",
-          "Поддерживал критичные legacy-системы для операционных процессов БЧ, работал с PostgreSQL, Oracle Database, SQL и NoSQL-интеграциями.",
+          "Разработал и внедрил сервис семантического поиска на embeddings: Python API, стыковка с внутренними системами БЧ, UI на React/TypeScript.",
+          "Настроил production-поставку сервисов: Docker, Nginx, CI/CD — воспроизводимый деплой вместо ручной выкладки.",
+          "Довёл приложение CAB RW (Flutter/Firebase) до релиза в Apple App Store, включая backend-интеграции и сопровождение публикации.",
+          "Сопровождал критичные legacy-системы операционных процессов БЧ (PostgreSQL, Oracle, SQL/NoSQL) — контуры, которые нельзя останавливать.",
         ],
       },
       {
         company: "Atlant Software",
+        companyContext: "Ресторанная платформа",
         role: "Middle Python Backend Developer",
         period: {
           start: {
@@ -110,12 +112,13 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Удаленно",
         bullets: [
-          "Разрабатывал backend-функциональность на Django и REST API для крупной ресторанной платформы: бизнес-логику, интеграции и работу с PostgreSQL.",
-          "Поддерживал production-функции, backend-тесты, Git workflow, code review и CI/CD-процессы.",
+          "Разрабатывал backend на Django и REST API для крупной ресторанной платформы: бизнес-логика, модели PostgreSQL, интеграции.",
+          "Держал production-контур: pytest, code review, Git-flow, CI/CD.",
         ],
       },
       {
         company: "Intelligent Semantic Systems",
+        companyContext: "AI / базы знаний",
         role: "Junior Python Backend Developer",
         period: {
           start: {
@@ -130,9 +133,9 @@ export const ruTranslation: TranslationResource = {
         },
         location: "Удаленно",
         bullets: [
-          "Разрабатывал backend-сервисы на Python для AI-пайплайнов, автоматизации и внутренних интеграций.",
-          "Создал Flask-сервис для перевода и предобработки форматов баз знаний, добавил тесты и поддержку фоновой обработки.",
-          "Участвовал в развитии внутренних Python-библиотек и асинхронной фоновой обработки для продуктовых команд.",
+          "Разрабатывал Python-сервисы для AI-пайплайнов, автоматизации и внутренних интеграций.",
+          "Сделал Flask-сервис перевода и предобработки форматов баз знаний: тесты и фоновая обработка.",
+          "Развивал внутренние Python-библиотеки и асинхронную/фоновую обработку для продуктовых команд.",
         ],
       },
     ],
@@ -160,38 +163,44 @@ export const ruTranslation: TranslationResource = {
         items: [
           "Python",
           "Django",
-          "Django REST Framework",
+          "DRF",
           "FastAPI",
           "Litestar",
+          "Flask",
           "Pydantic",
           "asyncio",
           "OpenAPI",
           "pytest",
           "Docker",
-          "Git",
           "CI/CD",
         ],
       },
       {
         title: "Brokers",
-        items: ["Kafka", "RabbitMQ", "Redis", "Celery"],
+        items: ["Redis", "Celery", "RabbitMQ", "Kafka"],
       },
       {
         title: "Database",
-        items: ["PostgreSQL", "SQLAlchemy", "Alembic", "Django ORM", "MongoDB"],
+        items: [
+          "PostgreSQL",
+          "SQLAlchemy",
+          "Alembic",
+          "Django ORM",
+          "Oracle",
+          "MongoDB",
+        ],
       },
       {
         title: "Monitoring",
-        items: ["Prometheus", "Grafana", "Sentry", "OpenTelemetry", "ELK"],
+        items: ["Prometheus", "Grafana", "Sentry"],
       },
       {
         title: "Дополнительно",
         items: [
+          "Nginx",
           "TypeScript",
           "React",
           "Flutter",
-          "Nginx",
-          "Kubernetes",
           "Semantic search",
           "LLM integrations",
         ],
