@@ -2,7 +2,7 @@ import type { TranslationResource } from "@/i18n/types";
 
 export const enTranslation: TranslationResource = {
   meta: {
-    title: "Mikhail Krupenkov Middle Python Backend Developer",
+    title: "Mikhail Krupenkov CV",
   },
   ui: {
     localeSwitcher: {
