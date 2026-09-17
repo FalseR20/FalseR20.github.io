@@ -164,9 +164,13 @@
     text-align: left !important;
   }
 
+  .cv-print-profile-heading h1 {
+    padding-right: 0 !important;
+  }
+
   .cv-print-profile-intro {
     flex-direction: row !important;
-    align-items: center !important;
+    align-items: start !important;
   }
 
   .cv-print-profile-photo {

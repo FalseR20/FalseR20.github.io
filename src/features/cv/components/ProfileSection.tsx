@@ -68,143 +68,139 @@ export function ProfileSection({
 
   return (
     <Card>
-      <CardContent>
-        <VStack className="gap-3 sm:gap-4">
-          <div className="cv-print-hidden flex items-center justify-end gap-2">
-            <LocaleSwitcher
-              locale={locale}
-              locales={locales}
-              onChangeLocale={onChangeLocale}
-            />
-            <a
-              href={cvPdfUrl}
-              download="Mikhail_Krupenkov_CV.pdf"
-              className={profileControlButtonClassName}
-              aria-label={t("ui.download.downloadResume")}
-              title={t("ui.download.downloadResume")}
+      <CardContent className="relative">
+        <div className="cv-print-hidden mb-3 flex items-center justify-end gap-2 sm:mb-4 lg:absolute lg:top-0 lg:right-0 lg:z-10 lg:mb-0">
+          <LocaleSwitcher
+            locale={locale}
+            locales={locales}
+            onChangeLocale={onChangeLocale}
+          />
+          <a
+            href={cvPdfUrl}
+            download="Mikhail_Krupenkov_CV.pdf"
+            className={profileControlButtonClassName}
+            aria-label={t("ui.download.downloadResume")}
+            title={t("ui.download.downloadResume")}
+          >
+            <FiDownload className="size-5" />
+          </a>
+          <button
+            type="button"
+            onClick={handlePrint}
+            className={profileControlButtonClassName}
+            aria-label={t("ui.print.printResume")}
+            title={t("ui.print.printResume")}
+          >
+            <FiPrinter className="size-5" />
+          </button>
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            className={profileControlButtonClassName}
+            aria-label={
+              theme === "dark"
+                ? t("ui.themeSwitcher.switchToLight")
+                : t("ui.themeSwitcher.switchToDark")
+            }
+            title={
+              theme === "dark"
+                ? t("ui.themeSwitcher.light")
+                : t("ui.themeSwitcher.dark")
+            }
+          >
+            {theme === "dark" ? (
+              <FiSun className="size-5" />
+            ) : (
+              <FiMoon className="size-5" />
+            )}
+          </button>
+        </div>
+
+        <VStack size="lg">
+          <div className="cv-print-profile-intro flex flex-col items-center gap-4 lg:flex-row lg:items-start lg:gap-5">
+            {showProfilePhoto ? (
+              <img
+                src={profilePhotoUrl}
+                alt={profile.fullName}
+                className="cv-print-profile-photo aspect-square h-40 w-40 shrink-0 rounded-xl border border-border bg-card object-cover sm:h-44 sm:w-44 lg:h-40 lg:w-40"
+              />
+            ) : null}
+            <VStack
+              size="md"
+              className="cv-print-profile-heading min-w-0 text-center lg:text-left"
             >
-              <FiDownload className="size-5" />
-            </a>
-            <button
-              type="button"
-              onClick={handlePrint}
-              className={profileControlButtonClassName}
-              aria-label={t("ui.print.printResume")}
-              title={t("ui.print.printResume")}
-            >
-              <FiPrinter className="size-5" />
-            </button>
-            <button
-              type="button"
-              onClick={onToggleTheme}
-              className={profileControlButtonClassName}
-              aria-label={
-                theme === "dark"
-                  ? t("ui.themeSwitcher.switchToLight")
-                  : t("ui.themeSwitcher.switchToDark")
-              }
-              title={
-                theme === "dark"
-                  ? t("ui.themeSwitcher.light")
-                  : t("ui.themeSwitcher.dark")
-              }
-            >
-              {theme === "dark" ? (
-                <FiSun className="size-5" />
-              ) : (
-                <FiMoon className="size-5" />
-              )}
-            </button>
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:pr-72">
+                {profile.fullName}
+              </h1>
+              <p className="text-lg text-foreground/85 sm:text-xl">
+                {profile.title}
+              </p>
+              <p className="text-base leading-7 text-muted-foreground">
+                {profile.summary}
+              </p>
+            </VStack>
           </div>
 
-          <VStack size="lg">
-            <div className="cv-print-profile-intro flex flex-col items-center gap-4 lg:flex-row lg:items-center lg:gap-5">
-              {showProfilePhoto ? (
-                <img
-                  src={profilePhotoUrl}
-                  alt={profile.fullName}
-                  className="cv-print-profile-photo aspect-square h-40 w-40 shrink-0 rounded-xl border border-border bg-card object-cover sm:h-44 sm:w-44 lg:h-40 lg:w-40"
-                />
-              ) : null}
-              <VStack
-                size="md"
-                className="cv-print-profile-heading min-w-0 text-center lg:text-left"
-              >
-                <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                  {profile.fullName}
-                </h1>
-                <p className="text-lg text-foreground/85 sm:text-xl">
-                  {profile.title}
-                </p>
-                <p className="text-base leading-7 text-muted-foreground">
-                  {profile.summary}
-                </p>
-              </VStack>
-            </div>
-
-            <div className="cv-print-contact-grid grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
-              {contacts.map(({ icon, label, value, href }) => {
-                const Icon = contactIcons[icon];
-                const content = (
-                  <div className="flex items-start gap-3 text-left">
-                    <Icon
-                      className="mt-0.5 size-4 shrink-0 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                    <div className="min-w-0">
-                      <CvLabel className="whitespace-nowrap">{label}</CvLabel>
-                      <p className="text-sm font-medium whitespace-nowrap text-foreground sm:text-base">
-                        {value}
-                      </p>
-                    </div>
+          <div className="cv-print-contact-grid grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+            {contacts.map(({ icon, label, value, href }) => {
+              const Icon = contactIcons[icon];
+              const content = (
+                <div className="flex items-start gap-3 text-left">
+                  <Icon
+                    className="mt-0.5 size-4 shrink-0 text-muted-foreground"
+                    aria-hidden="true"
+                  />
+                  <div className="min-w-0">
+                    <CvLabel className="whitespace-nowrap">{label}</CvLabel>
+                    <p className="text-sm font-medium whitespace-nowrap text-foreground sm:text-base">
+                      {value}
+                    </p>
                   </div>
-                );
+                </div>
+              );
 
-                if (!href) {
-                  return (
-                    <CardSurface
-                      key={label}
-                      size="dense"
-                      className="min-w-0 transition-colors"
-                    >
-                      {content}
-                    </CardSurface>
-                  );
-                }
-
+              if (!href) {
                 return (
                   <CardSurface
-                    as="a"
                     key={label}
                     size="dense"
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noreferrer" : undefined}
-                    className={cn(
-                      "block min-w-0 hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
-                      "transition-colors",
-                    )}
-                    aria-label={`${label}: ${value}`}
-                    title={value}
+                    className="min-w-0 transition-colors"
                   >
                     {content}
                   </CardSurface>
                 );
-              })}
-            </div>
+              }
 
-            <div className="cv-print-only -mt-3 text-right text-xs leading-5 text-muted-foreground/75">
-              <span className="font-medium">
-                {t("ui.print.onlineVersion")}:{" "}
-              </span>
-              <a
-                href={currentPageUrl}
-                className="font-medium break-all text-muted-foreground/85"
-              >
-                {currentPageUrl}
-              </a>
-            </div>
-          </VStack>
+              return (
+                <CardSurface
+                  as="a"
+                  key={label}
+                  size="dense"
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noreferrer" : undefined}
+                  className={cn(
+                    "block min-w-0 hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
+                    "transition-colors",
+                  )}
+                  aria-label={`${label}: ${value}`}
+                  title={value}
+                >
+                  {content}
+                </CardSurface>
+              );
+            })}
+          </div>
+
+          <div className="cv-print-only -mt-3 text-right text-xs leading-5 text-muted-foreground/75">
+            <span className="font-medium">{t("ui.print.onlineVersion")}: </span>
+            <a
+              href={currentPageUrl}
+              className="font-medium break-all text-muted-foreground/85"
+            >
+              {currentPageUrl}
+            </a>
+          </div>
         </VStack>
       </CardContent>
     </Card>
