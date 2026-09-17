@@ -20,6 +20,9 @@ export const ruTranslation: TranslationResource = {
       onlineVersion: "Актуальная версия резюме",
       printResume: "Печать резюме",
     },
+    download: {
+      downloadResume: "Скачать резюме",
+    },
     experience: {
       title: "Коммерческий опыт",
     },

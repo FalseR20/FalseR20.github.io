@@ -4,12 +4,14 @@ import {
   FiMoon,
   FiSun,
   FiPrinter,
+  FiDownload,
   FiMapPin,
   FiMail,
   FiLinkedin,
   FiGithub,
 } from "react-icons/fi";
 
+import cvPdfUrl from "../../../../public/CV.pdf";
 import profilePhotoUrl from "../../../../public/photo.jpg";
 
 import { Card, CardContent, CardSurface } from "@/components/ui/card";
@@ -74,6 +76,15 @@ export function ProfileSection({
               locales={locales}
               onChangeLocale={onChangeLocale}
             />
+            <a
+              href={cvPdfUrl}
+              download="Mikhail_Krupenkov_CV.pdf"
+              className={profileControlButtonClassName}
+              aria-label={t("ui.download.downloadResume")}
+              title={t("ui.download.downloadResume")}
+            >
+              <FiDownload className="size-5" />
+            </a>
             <button
               type="button"
               onClick={handlePrint}

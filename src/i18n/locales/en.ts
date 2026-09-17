@@ -20,6 +20,9 @@ export const enTranslation: TranslationResource = {
       onlineVersion: "Current CV version",
       printResume: "Print CV",
     },
+    download: {
+      downloadResume: "Download CV",
+    },
     experience: {
       title: "Professional Experience",
     },

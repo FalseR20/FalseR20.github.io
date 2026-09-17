@@ -16,6 +16,14 @@ declare module "*.jpg" {
   export default path;
 }
 
+declare module "*.pdf" {
+  /**
+   * A path to the PDF file
+   */
+  const path: `${string}.pdf`;
+  export default path;
+}
+
 declare module "*.module.css" {
   /**
    * A record of class names to their corresponding CSS module classes

@@ -24,6 +24,9 @@ export type TranslationResource = {
       onlineVersion: string;
       printResume: string;
     };
+    download: {
+      downloadResume: string;
+    };
     experience: {
       title: string;
     };
